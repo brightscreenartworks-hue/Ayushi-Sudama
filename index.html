@@ -1,0 +1,4947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Ayushi & Sudama | Wedding Invitation</title>
+  <style>
+    @font-face {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE';
+      src: url('RosemarryeScript.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    html,
+    body {
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #ede4ce;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    /* Multi-section Smooth Scroll Container */
+    .app-container {
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Scroll is locked until First Cut animation finishes */
+    .app-container.scroll-locked {
+      overflow-y: hidden !important;
+      touch-action: none;
+    }
+
+    .card-section {
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+      overflow: hidden;
+      background-color: #ede4ce;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    #stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .venue-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    /* Section 2: Master Venue Card Wrapper & Info Overlay */
+    .venue-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: venue-wrapper;
+    }
+
+    .venue-card-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+    }
+
+    /* Pink Petals Falling Canvas (Section 2 Only) */
+    .pink-petals-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Section 3: Welcome Slide & Lunch Video Stage & Card Container */
+    .welcome-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .welcome-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: welcome-wrapper;
+    }
+
+    .welcome-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .welcome-video.active {
+      opacity: 1;
+    }
+
+    /* Section 3: Welcome Open Text Overlay (Top 3% Padding, Direct on Artwork) */
+    .welcome-info-overlay {
+      position: absolute;
+      top: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Initial Staggered Items for Section 3 */
+    .welcome-info-overlay .initial-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .welcome-info-overlay.revealed .initial-stagger:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .welcome-info-overlay.revealed .initial-stagger:nth-child(2) {
+      transition-delay: 0.38s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .welcome-info-overlay.revealed .initial-stagger:nth-child(3) {
+      transition-delay: 0.61s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .welcome-info-overlay.revealed .initial-stagger:nth-child(4) {
+      transition-delay: 0.84s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .welcome-heading {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 10.56cqi;
+      color: #D53A5C;
+      font-weight: normal;
+      line-height: 0.95;
+      white-space: nowrap;
+      margin: 0 0 2.5% 0;
+      text-shadow: none;
+      pointer-events: auto;
+    }
+
+    .welcome-date {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.60cqi;
+      color: #8F542A;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5%;
+      line-height: 1.1;
+      text-shadow: none;
+      pointer-events: auto;
+    }
+
+    .welcome-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5cqi;
+      padding: 0;
+      margin-bottom: 3.5%;
+      pointer-events: auto;
+    }
+
+    .welcome-countdown .count-val,
+    .welcome-countdown .count-lbl,
+    .welcome-countdown .count-sep {
+      color: #8F542A;
+      text-shadow: none;
+    }
+
+    .welcome-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8cqi;
+      background: #D53A5C;
+      color: #ffffff;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.8% 5.5%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .welcome-details-btn:hover {
+      background: #e04668;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .welcome-details-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .welcome-details-btn .chevron-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .welcome-details-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .welcome-details-content {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      pointer-events: auto;
+    }
+
+    .welcome-details-content.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 3%;
+    }
+
+    .welcome-details-content .open-detail-lbl {
+      color: #D53A5C;
+      font-weight: 700;
+      text-shadow: none;
+    }
+
+    .welcome-details-content .open-detail-val {
+      color: #3D1B24;
+      font-weight: 600;
+      text-shadow: none;
+    }
+
+    .welcome-details-content.open .stagger-item:nth-child(1) {
+      transition-delay: 0.12s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .welcome-details-content.open .stagger-item:nth-child(2) {
+      transition-delay: 0.26s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .welcome-details-content.open .stagger-item:nth-child(3) {
+      transition-delay: 0.40s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section 4: Mandap Mahurat Video Stage & Card Container */
+    .mandap-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .mandap-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: mandap-wrapper;
+    }
+
+    .mandap-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .mandap-video.active {
+      opacity: 1;
+    }
+
+    /* Section 4: Mandap Muhurat Open Text Overlay (Top 25% Padding, Direct on Artwork) */
+    .mandap-info-overlay {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Initial Staggered Items for Section 4 */
+    .mandap-info-overlay .initial-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mandap-info-overlay.revealed .initial-stagger:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mandap-info-overlay.revealed .initial-stagger:nth-child(2) {
+      transition-delay: 0.38s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mandap-info-overlay.revealed .initial-stagger:nth-child(3) {
+      transition-delay: 0.61s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mandap-info-overlay.revealed .initial-stagger:nth-child(4) {
+      transition-delay: 0.84s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mandap-heading {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 10.56cqi;
+      color: #B60909;
+      font-weight: normal;
+      line-height: 0.95;
+      white-space: nowrap;
+      margin: 0 0 2.5% 0;
+      text-shadow: none;
+      pointer-events: auto;
+    }
+
+    .mandap-date {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.60cqi;
+      color: #8F542A;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5%;
+      line-height: 1.1;
+      text-shadow: none;
+      pointer-events: auto;
+    }
+
+    .mandap-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5cqi;
+      padding: 0;
+      margin-bottom: 3.5%;
+      pointer-events: auto;
+    }
+
+    .mandap-countdown .count-val,
+    .mandap-countdown .count-lbl,
+    .mandap-countdown .count-sep {
+      color: #8F542A;
+      text-shadow: none;
+    }
+
+    .mandap-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8cqi;
+      background: #B60909;
+      color: #ffffff;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.8% 5.5%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .mandap-details-btn:hover {
+      background: #cf1b1b;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .mandap-details-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .mandap-details-btn .chevron-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .mandap-details-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .mandap-details-content {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      pointer-events: auto;
+    }
+
+    .mandap-details-content.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 3%;
+    }
+
+    .mandap-details-content .open-detail-lbl {
+      color: #B60909;
+      font-weight: 700;
+      text-shadow: none;
+    }
+
+    .mandap-details-content .open-detail-val {
+      color: #2D1A04;
+      font-weight: 600;
+      text-shadow: none;
+    }
+
+    .mandap-details-content.open .stagger-item:nth-child(1) {
+      transition-delay: 0.12s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mandap-details-content.open .stagger-item:nth-child(2) {
+      transition-delay: 0.26s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mandap-details-content.open .stagger-item:nth-child(3) {
+      transition-delay: 0.40s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section 5: Mehendi Video Stage & Card Container */
+    .mehendi-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .mehendi-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: mehendi-wrapper;
+    }
+
+    .mehendi-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .mehendi-video.active {
+      opacity: 1;
+    }
+
+    /* Section 5: Mehendi Open Text Overlay (Top 15% Padding, Direct on Artwork) */
+    .mehendi-info-overlay {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Section 5: Mehendi Caricature Asset (-5% Bottom Margin, 0% Padding, Increased size by 25% to 103.125cqi) */
+    .mehendi-caricature-img {
+      position: absolute;
+      bottom: 0%;
+      margin-bottom: -5%;
+      padding: 0;
+      left: 50%;
+      transform: translate(calc(-50% - 50px), 0);
+      width: 103.125cqi;
+      max-width: 123%;
+      height: auto;
+      z-index: 8;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mehendi-caricature-img.revealed-permanently {
+      opacity: 1 !important;
+      transform: translate(-50%, 0) !important;
+    }
+
+    /* Initial Staggered Items for Section 5 */
+    .mehendi-info-overlay .initial-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mehendi-info-overlay.revealed .initial-stagger:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mehendi-info-overlay.revealed .initial-stagger:nth-child(2) {
+      transition-delay: 0.38s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mehendi-info-overlay.revealed .initial-stagger:nth-child(3) {
+      transition-delay: 0.61s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mehendi-info-overlay.revealed .initial-stagger:nth-child(4) {
+      transition-delay: 0.84s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mehendi-heading {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 14.625cqi;
+      color: #548D39;
+      font-weight: normal;
+      line-height: 0.95;
+      white-space: nowrap;
+      margin: 0 0 2.5% 0;
+      position: relative;
+      left: -2%;
+      pointer-events: auto;
+    }
+
+    .mehendi-date {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.60cqi;
+      color: #966B42;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5%;
+      line-height: 1.1;
+      pointer-events: auto;
+    }
+
+    .mehendi-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5cqi;
+      padding: 0;
+      margin-bottom: 3.5%;
+      pointer-events: auto;
+    }
+
+    .mehendi-countdown .count-val,
+    .mehendi-countdown .count-lbl,
+    .mehendi-countdown .count-sep {
+      color: #966B42;
+    }
+
+    .mehendi-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8cqi;
+      background: #548D39;
+      color: #ffffff;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.8% 5.5%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .mehendi-details-btn:hover {
+      background: #62a343;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .mehendi-details-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .mehendi-details-btn .chevron-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .mehendi-details-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .mehendi-details-content {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      pointer-events: auto;
+    }
+
+    .mehendi-details-content.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 3%;
+    }
+
+    .mehendi-details-content .open-detail-lbl {
+      color: #3A6326;
+      font-weight: 700;
+    }
+
+    .mehendi-details-content .open-detail-val {
+      color: #2D1A04;
+      font-weight: 600;
+    }
+
+    .mehendi-details-content.open .stagger-item:nth-child(1) {
+      transition-delay: 0.12s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mehendi-details-content.open .stagger-item:nth-child(2) {
+      transition-delay: 0.26s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mehendi-details-content.open .stagger-item:nth-child(3) {
+      transition-delay: 0.40s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mehendi-details-content.open .stagger-item:nth-child(4) {
+      transition-delay: 0.54s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section 6: Sangeet Video Stage & Card Container */
+    .sangeet-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .sangeet-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: sangeet-wrapper;
+    }
+
+    .sangeet-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      pointer-events: none;
+    }
+
+    /* Section 7: Haldi Video Stage & Card Container */
+    .haldi-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .haldi-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: haldi-wrapper;
+    }
+
+    .haldi-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .haldi-video.active {
+      opacity: 1;
+    }
+
+    .haldi-video.active {
+      opacity: 1;
+    }
+
+    .haldi-video.active {
+      opacity: 1;
+    }
+
+    .haldi-video.active {
+      opacity: 1;
+    }
+
+    /* Section 7: Haldi Open Text Overlay (Top 12% Padding, Direct on Artwork) */
+    .haldi-info-overlay {
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Haldi Caricature Asset (Golden Lotus Couple Portrait) */
+    .haldi-caricature-img {
+      position: absolute;
+      bottom: 6%;
+      left: 50%;
+      transform: translate(calc(-50% - 50px), 0);
+      width: 76cqi;
+      max-width: 98%;
+      height: auto;
+      z-index: 8;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .haldi-caricature-img.revealed-permanently {
+      opacity: 1 !important;
+      transform: translate(-50%, 0) !important;
+    }
+
+    /* Initial Staggered Items: Slow Fade-In & Upward Movement */
+    .initial-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .haldi-info-overlay.revealed .initial-stagger:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .haldi-info-overlay.revealed .initial-stagger:nth-child(2) {
+      transition-delay: 0.38s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .haldi-info-overlay.revealed .initial-stagger:nth-child(3) {
+      transition-delay: 0.61s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .haldi-info-overlay.revealed .initial-stagger:nth-child(4) {
+      transition-delay: 0.84s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* "Haldi" Heading: Decreased size by 10% (14.625cqi) & shifted 2% left */
+    .haldi-heading {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 14.625cqi;
+      color: #d76700;
+      font-weight: normal;
+      line-height: 0.95;
+      margin: 0 0 1% 0;
+      position: relative;
+      left: -2%;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 2px 10px rgba(0, 0, 0, 0.12);
+      pointer-events: auto;
+    }
+
+    /* "11 December 2026": Palatino Bold #19577b 3.60cqi */
+    .haldi-date {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.60cqi;
+      color: #19577b;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5%;
+      line-height: 1.1;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+      pointer-events: auto;
+    }
+
+    /* Tight Live Countdown Timer (Increased size by 25% & #19577b color) */
+    .haldi-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5cqi;
+      padding: 0;
+      margin-bottom: 3.5%;
+      pointer-events: auto;
+    }
+
+    .count-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 6.0cqi;
+    }
+
+    .count-val {
+      font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+      font-weight: 700;
+      font-size: 4.5cqi;
+      color: #19577b;
+      line-height: 1;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+    }
+
+    .count-lbl {
+      font-family: 'Georgia', Georgia, serif;
+      font-size: 1.7cqi;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #19577b;
+      opacity: 0.85;
+      margin-top: 2px;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+    }
+
+    .count-sep {
+      font-family: 'Palatino', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.95cqi;
+      color: #19577b;
+      opacity: 0.85;
+      margin-top: -4px;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+    }
+
+    /* Standalone View Details Button */
+    .haldi-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8cqi;
+      background: #d76700;
+      color: #ffffff;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.8% 5.5%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(215, 103, 0, 0.35);
+      transition: all 0.3s ease;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .haldi-details-btn:hover {
+      background: #ed7300;
+      box-shadow: 0 6px 18px rgba(215, 103, 0, 0.48);
+      transform: translateY(-1px);
+    }
+
+    .haldi-details-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(215, 103, 0, 0.3);
+    }
+
+    .haldi-details-btn .chevron-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .haldi-details-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Open Revealed Details Content (Clean, Subtle Background Box for Readability) */
+    .haldi-details-content {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      pointer-events: auto;
+    }
+
+    .haldi-details-content.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 3%;
+    }
+
+    .subtle-details-box {
+      background: rgba(255, 253, 247, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(215, 103, 0, 0.32);
+      border-radius: 2.2cqi;
+      padding: 4.5% 5.5%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 16px rgba(215, 103, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.0cqi;
+      text-align: center;
+    }
+
+    /* Staggered Slow Upward Fade-In Animation for Each Detail Element */
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35cqi;
+      width: 100%;
+    }
+
+    .haldi-details-content.open .stagger-item:nth-child(1) {
+      transition-delay: 0.12s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .haldi-details-content.open .stagger-item:nth-child(2) {
+      transition-delay: 0.26s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .haldi-details-content.open .stagger-item:nth-child(3) {
+      transition-delay: 0.40s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .haldi-details-content.open .stagger-item:nth-child(4) {
+      transition-delay: 0.54s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .haldi-details-content.open .stagger-item:nth-child(5) {
+      transition-delay: 0.68s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Details Font Sizes Increased by +15% */
+    .open-detail-lbl {
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.3cqi;
+      color: #d76700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .open-detail-val {
+      font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+      font-weight: 600;
+      font-size: 3.0cqi;
+      color: #3b1d00;
+    }
+
+    .open-palette-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2cqi;
+    }
+
+    .open-palette-txt {
+      font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+      font-weight: 600;
+      font-size: 3.0cqi;
+      color: #3b1d00;
+    }
+
+    .swatch {
+      width: 3.7cqi;
+      height: 3.7cqi;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+      border: 1.5px solid #ffffff;
+    }
+
+    .swatch-yellow {
+      background: linear-gradient(135deg, #ffd700, #ffb300);
+    }
+
+    .swatch-orange {
+      background: linear-gradient(135deg, #ff7a00, #e65100);
+    }
+
+    .open-lunch-banner {
+      margin-top: 1.2%;
+      color: #d76700;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.76cqi;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Section 6: Sangeet Video Stage & Card Container */
+    .sangeet-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .sangeet-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: sangeet-wrapper;
+    }
+
+    .sangeet-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .sangeet-video.active {
+      opacity: 1;
+    }
+
+    /* Section 6: Sangeet Open Text Overlay (Top 15% Padding, Direct on Artwork) */
+    .sangeet-info-overlay {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Section 6: Sangeet Caricature Asset (0% Bottom Padding, Left-to-Center Fade Entrance, Revealed Once Only) */
+    .sangeet-caricature-img {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translate(calc(-50% - 50px), 0);
+      width: 82.5cqi;
+      max-width: 98%;
+      height: auto;
+      z-index: 8;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .sangeet-caricature-img.revealed-permanently {
+      opacity: 1 !important;
+      transform: translate(-50%, 0) !important;
+    }
+
+    /* Initial Staggered Items for Section 6 */
+    .sangeet-info-overlay .initial-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .sangeet-info-overlay.revealed .initial-stagger:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sangeet-info-overlay.revealed .initial-stagger:nth-child(2) {
+      transition-delay: 0.38s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sangeet-info-overlay.revealed .initial-stagger:nth-child(3) {
+      transition-delay: 0.61s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sangeet-info-overlay.revealed .initial-stagger:nth-child(4) {
+      transition-delay: 0.84s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sangeet-heading {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 13.8125cqi;
+      color: #FFE47C;
+      font-weight: normal;
+      line-height: 0.95;
+      white-space: nowrap;
+      margin: 0 0 3% 0;
+      position: relative;
+      left: -2%;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
+      pointer-events: auto;
+    }
+
+    .sangeet-date {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.60cqi;
+      color: #DDE0DB;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5%;
+      line-height: 1.1;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      pointer-events: auto;
+    }
+
+    .sangeet-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5cqi;
+      padding: 0;
+      margin-bottom: 3.5%;
+      pointer-events: auto;
+    }
+
+    .sangeet-countdown .count-val,
+    .sangeet-countdown .count-lbl,
+    .sangeet-countdown .count-sep {
+      color: #DDE0DB;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .sangeet-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8cqi;
+      background: #FFE47C;
+      color: #2b2000;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.8% 5.5%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .sangeet-details-btn:hover {
+      background: #fff0aa;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .sangeet-details-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .sangeet-details-btn .chevron-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .sangeet-details-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .sangeet-details-content {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      pointer-events: auto;
+    }
+
+    .sangeet-details-content.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 3%;
+    }
+
+    .sangeet-details-content .open-detail-lbl {
+      color: #946900;
+      font-weight: 700;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .sangeet-details-content .open-detail-val {
+      color: #2D1A04;
+      font-weight: 600;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .sangeet-details-content.open .stagger-item:nth-child(1) {
+      transition-delay: 0.12s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sangeet-details-content.open .stagger-item:nth-child(2) {
+      transition-delay: 0.26s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sangeet-details-content.open .stagger-item:nth-child(3) {
+      transition-delay: 0.40s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sangeet-details-content.open .stagger-item:nth-child(4) {
+      transition-delay: 0.54s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section 8: Wedding Video Stage & Card Container */
+    .wedding-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .wedding-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: wedding-wrapper;
+    }
+
+    .wedding-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .wedding-video.active {
+      opacity: 1;
+    }
+
+    /* Section 8: Wedding Open Text Overlay (Top 15% Padding, Direct on Artwork) */
+    .wedding-info-overlay {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Section 8: Wedding Caricature Asset (0% Bottom Padding, Left-to-Center Fade Entrance, Revealed Once Only) */
+    .wedding-caricature-img {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translate(calc(-50% - 50px), 0);
+      width: 66cqi;
+      max-width: 95%;
+      height: auto;
+      z-index: 8;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .wedding-caricature-img.revealed-permanently {
+      opacity: 1 !important;
+      transform: translate(-50%, 0) !important;
+    }
+
+    /* Initial Staggered Items for Section 8 */
+    .wedding-info-overlay .initial-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .wedding-info-overlay.revealed .initial-stagger:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wedding-info-overlay.revealed .initial-stagger:nth-child(2) {
+      transition-delay: 0.38s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wedding-info-overlay.revealed .initial-stagger:nth-child(3) {
+      transition-delay: 0.61s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wedding-info-overlay.revealed .initial-stagger:nth-child(4) {
+      transition-delay: 0.84s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wedding-heading {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 10.56cqi;
+      color: #DBD885;
+      font-weight: normal;
+      line-height: 0.95;
+      white-space: nowrap;
+      margin: 0 0 2.5% 0;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
+      pointer-events: auto;
+    }
+
+    .wedding-date {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.60cqi;
+      color: #DDE0DB;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5%;
+      line-height: 1.1;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      pointer-events: auto;
+    }
+
+    .wedding-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5cqi;
+      padding: 0;
+      margin-bottom: 3.5%;
+      pointer-events: auto;
+    }
+
+    .wedding-countdown .count-val,
+    .wedding-countdown .count-lbl,
+    .wedding-countdown .count-sep {
+      color: #DDE0DB;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .wedding-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8cqi;
+      background: #DBD885;
+      color: #2b2300;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.8% 5.5%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .wedding-details-btn:hover {
+      background: #eae798;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .wedding-details-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .wedding-details-btn .chevron-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .wedding-details-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .wedding-details-content {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      pointer-events: auto;
+    }
+
+    .wedding-details-content.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 3%;
+    }
+
+    .wedding-details-content .open-detail-lbl {
+      color: #946900;
+      font-weight: 700;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .wedding-details-content .open-detail-val,
+    .wedding-details-content .open-palette-txt {
+      color: #2D1A04;
+      font-weight: 600;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .wedding-details-content.open .stagger-item:nth-child(1) {
+      transition-delay: 0.12s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wedding-details-content.open .stagger-item:nth-child(2) {
+      transition-delay: 0.26s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wedding-details-content.open .stagger-item:nth-child(3) {
+      transition-delay: 0.40s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wedding-details-content.open .stagger-item:nth-child(4) {
+      transition-delay: 0.54s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section 8: Wedding Caricature Asset (0% Bottom Padding, Increased size by 25% to 82.5cqi) */
+    .wedding-caricature-img {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translate(calc(-50% - 50px), 0);
+      width: 82.5cqi;
+      max-width: 98%;
+      height: auto;
+      z-index: 8;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Reception Section Styles (Mirrors 5th page / Baraat & Varmala text format) */
+    .reception-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .reception-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: reception-wrapper;
+    }
+
+    .reception-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      pointer-events: none;
+    }
+
+    .reception-info-overlay {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .reception-caricature-img {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translate(calc(-50% - 50px), 0);
+      width: 82.5cqi;
+      max-width: 98%;
+      height: auto;
+      z-index: 8;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.3s ease, transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reception-caricature-img.revealed-permanently {
+      opacity: 1 !important;
+      transform: translate(-50%, 0) !important;
+    }
+
+    .reception-info-overlay .initial-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reception-info-overlay.revealed .initial-stagger:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reception-info-overlay.revealed .initial-stagger:nth-child(2) {
+      transition-delay: 0.38s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reception-info-overlay.revealed .initial-stagger:nth-child(3) {
+      transition-delay: 0.61s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reception-info-overlay.revealed .initial-stagger:nth-child(4) {
+      transition-delay: 0.84s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reception-heading {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 13.5cqi;
+      color: #DBD885;
+      font-weight: normal;
+      line-height: 0.95;
+      white-space: nowrap;
+      margin: 0 0 2.5% 0;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
+      pointer-events: auto;
+    }
+
+    .reception-date {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 3.60cqi;
+      color: #DDE0DB;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5%;
+      line-height: 1.1;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      pointer-events: auto;
+    }
+
+    .reception-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5cqi;
+      padding: 0;
+      margin-bottom: 3.5%;
+      pointer-events: auto;
+    }
+
+    .reception-countdown .count-val,
+    .reception-countdown .count-lbl,
+    .reception-countdown .count-sep {
+      color: #DDE0DB;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .reception-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8cqi;
+      background: #DBD885;
+      color: #2b2300;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1.8% 5.5%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      outline: none;
+      pointer-events: auto;
+    }
+
+    .reception-details-btn:hover {
+      background: #eae798;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .reception-details-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .reception-details-btn .chevron-icon {
+      transition: transform 0.4s ease;
+    }
+
+    .reception-details-btn.open .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .reception-details-content {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.3s ease;
+      margin-top: 0;
+      pointer-events: auto;
+    }
+
+    .reception-details-content.open {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 3%;
+    }
+
+    .reception-details-content .open-detail-lbl {
+      color: #946900;
+      font-weight: 700;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .reception-details-content .open-detail-val {
+      color: #2D1A04;
+      font-weight: 600;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .reception-details-content.open .stagger-item:nth-child(1) {
+      transition-delay: 0.12s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reception-details-content.open .stagger-item:nth-child(2) {
+      transition-delay: 0.26s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section 9: Last Page Video Stage & Card Container */
+    .lastpage-stage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ede4ce;
+    }
+
+    .lastpage-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+      container-type: inline-size;
+      container-name: lastpage-wrapper;
+    }
+
+    .lastpage-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: fill;
+      pointer-events: none;
+    }
+
+    /* Section 9: RSVP & Warm Regards Overlay (No Form Background - Top 25% Margin) */
+    .rsvp-info-overlay {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88%;
+      max-width: 90%;
+      z-index: 10;
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Initial Staggered Items for Section 9 (Same as Section 1 Reveal Animations) */
+    .rsvp-info-overlay .reveal-item {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.85s ease-out, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      width: 100%;
+      text-align: center;
+    }
+
+    .rsvp-info-overlay.revealed .reveal-item:nth-child(1) {
+      transition-delay: 0.15s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rsvp-info-overlay.revealed .reveal-item:nth-child(2) {
+      transition-delay: 0.35s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rsvp-info-overlay.revealed .reveal-item:nth-child(3) {
+      transition-delay: 0.55s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rsvp-info-overlay.revealed .reveal-item:nth-child(4) {
+      transition-delay: 0.75s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rsvp-info-overlay.revealed .reveal-item:nth-child(5) {
+      transition-delay: 0.95s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RSVP Heading (Georgia Semibold, #B81616 - 50% Reduced to 4.25cqi) */
+    .rsvp-heading {
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: 600;
+      font-size: 4.25cqi;
+      color: #B81616;
+      line-height: 1.0;
+      margin: 0 0 2.5% 0;
+      text-shadow: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Interactive RSVP Form with NO background */
+    .rsvp-form {
+      width: 100%;
+      max-width: 85%;
+      margin: 0 auto 10% auto;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2cqi;
+    }
+
+    .rsvp-field-row {
+      width: 100%;
+    }
+
+    .rsvp-field-grid {
+      width: 100%;
+      display: flex;
+      gap: 2cqi;
+      justify-content: center;
+    }
+
+    .rsvp-input,
+    .rsvp-select {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1.5px solid rgba(141, 92, 20, 0.45);
+      border-radius: 8px;
+      padding: 2.2% 4%;
+      font-family: 'Georgia', Georgia, serif;
+      font-size: 2.5cqi;
+      color: #8D5C14;
+      outline: none;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .rsvp-input::placeholder {
+      color: rgba(141, 92, 20, 0.7);
+    }
+
+    .rsvp-input:focus,
+    .rsvp-select:focus {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: #B81616;
+      box-shadow: 0 0 8px rgba(184, 22, 22, 0.25);
+    }
+
+    .rsvp-select option {
+      background: #ffffff;
+      color: #8D5C14;
+    }
+
+    .rsvp-submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #B81616;
+      color: #ffffff;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.4cqi;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2% 7%;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(184, 22, 22, 0.3);
+      transition: all 0.3s ease;
+      margin-top: 1%;
+    }
+
+    .rsvp-submit-btn:hover {
+      background: #cf1b1b;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(184, 22, 22, 0.4);
+    }
+
+    .rsvp-submit-btn:active {
+      transform: translateY(1px);
+    }
+
+    .rsvp-success-msg {
+      display: none;
+      font-family: 'Georgia', Georgia, serif;
+      font-size: 2.5cqi;
+      font-weight: bold;
+      color: #B81616;
+      margin-top: 2%;
+      padding: 2% 4%;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    .rsvp-success-msg.show {
+      display: block;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    /* Warm Regards Block */
+    .rsvp-regards-block {
+      margin-bottom: 3.5%;
+    }
+
+    .rsvp-regards-title {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-size: 3.2cqi;
+      font-weight: 700;
+      color: #8D5C14;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1%;
+      padding-bottom: 1%;
+      text-shadow: none;
+    }
+
+    .rsvp-family-name {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 9.5cqi;
+      color: #B81616;
+      font-weight: normal;
+      line-height: 1.0;
+      text-shadow: none;
+      white-space: pre-wrap;
+    }
+
+    /* Contacts Block */
+    .rsvp-contacts-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8cqi;
+      margin-top: 1%;
+      margin-bottom: 2.5%;
+    }
+
+    .rsvp-contact-item {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-size: 2.6cqi;
+      font-weight: 600;
+      color: #8D5C14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.0cqi;
+      white-space: nowrap;
+    }
+
+    .rsvp-contact-item .contact-phone {
+      color: #8D5C14;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .rsvp-contact-item .contact-phone:hover {
+      color: #B81616;
+      text-decoration: underline;
+    }
+
+    /* No Gifts Please Block */
+    .rsvp-nogifts-block {
+      margin-top: 1%;
+    }
+
+    .rsvp-nogifts-text {
+      font-family: 'Georgia', Georgia, serif;
+      font-size: 2.9cqi;
+      font-style: italic;
+      font-weight: 600;
+      color: #8D5C14;
+      margin: 0;
+      line-height: 1.35;
+      text-shadow: none;
+    }
+
+    /* Section 2 Header Monogram & Hashtag (7.5% top padding - 2x reduced from 15%) */
+    .venue-header-container {
+      position: absolute;
+      top: 7.5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      width: 85%;
+      pointer-events: none;
+    }
+
+    /* Logo enlarged 1.5x (39cqi) with transparent background */
+    .pn-monogram-img {
+      width: 39cqi;
+      height: 39cqi;
+      object-fit: contain;
+      background: transparent;
+      border-radius: 0;
+      mix-blend-mode: normal;
+      filter: drop-shadow(0 6px 16px rgba(141, 92, 20, 0.28));
+      margin-bottom: 0.5%; /* 2x reduced spacing between PNG and hashtag text */
+    }
+
+    /* Subtle Preview Grid & Watermark Overlay across entire website */
+    .preview-watermark-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      width: 100dvw;
+      height: 100vh;
+      height: 100dvh;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: 
+        linear-gradient(rgba(141, 92, 20, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(141, 92, 20, 0.07) 1px, transparent 1px),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='180'><text x='50%' y='50%' text-anchor='middle' transform='rotate(-25 140 90)' fill='rgba(141,92,20,0.12)' font-family='sans-serif' font-weight='800' font-size='16' letter-spacing='3'>ONLY FOR PREVIEW</text></svg>");
+      background-size: 40px 40px, 40px 40px, 280px 180px;
+    }
+
+    /* Hashtag text size unchanged (3.8cqi) */
+    .hashtag-text {
+      font-family: 'Georgia', Georgia, serif;
+      font-style: italic;
+      font-weight: normal;
+      font-size: 3.8cqi;
+      color: #8D5C14;
+      letter-spacing: 0.05em;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+      white-space: nowrap;
+      margin-top: -1cqi;
+    }
+
+    .venue-info-overlay {
+      position: absolute;
+      top: 36%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 78%;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      container-type: inline-size;
+      container-name: venue-info;
+      pointer-events: auto;
+    }
+
+    /* Layer-by-Layer Staggered Slow Upward Fade-In Animations for Section 2 */
+    .venue-card-wrapper .pn-monogram-img,
+    .venue-card-wrapper .hashtag-text,
+    .venue-card-wrapper .venue-info-card {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .venue-card-wrapper.animated-in .pn-monogram-img {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.15s;
+    }
+
+    .venue-card-wrapper.animated-in .hashtag-text {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.55s;
+    }
+
+    .venue-card-wrapper.animated-in .venue-info-card {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.95s;
+    }
+
+    .venue-info-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(141, 92, 20, 0.35);
+      border-radius: 2.5cqi;
+      padding: 5% 6%;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 0 15px rgba(212, 175, 55, 0.2);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .venue-heading {
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 3.2cqi;
+      color: #8D5C14;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin: 0 0 2% 0;
+      opacity: 0.9;
+    }
+
+    .venue-name {
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: 600;
+      font-size: 6.0cqi;
+      color: #B81616;
+      margin: 0 0 1% 0;
+      line-height: 1.25;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    .venue-location {
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: normal;
+      font-size: 4.4cqi;
+      color: #8D5C14;
+      margin: 0 0 5% 0;
+      line-height: 1.3;
+    }
+
+    .venue-directions-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2cqi;
+      background: linear-gradient(135deg, #8D5C14, #B81616);
+      color: #ffffff !important;
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: 600;
+      font-size: 3.6cqi;
+      letter-spacing: 0.06em;
+      padding: 3% 8%;
+      border-radius: 30px;
+      text-decoration: none !important;
+      box-shadow: 0 4px 15px rgba(141, 92, 20, 0.35);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      margin-top: 1%;
+    }
+
+    .venue-directions-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(184, 22, 22, 0.45);
+      background: linear-gradient(135deg, #a16b17, #cf1b1b);
+    }
+
+    .venue-directions-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .venue-directions-btn svg {
+      width: 3.6cqi;
+      height: 3.6cqi;
+      stroke: currentColor;
+    }
+
+    /* Scroll Hint Chip styling */
+    .scroll-hint-overlay {
+      position: absolute;
+      bottom: max(20px, 3dvh);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 90;
+      pointer-events: auto;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      cursor: pointer;
+    }
+
+    .scroll-hint-overlay.hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transform: translate(-50%, 15px) !important;
+    }
+
+    .scroll-hint-chip {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(141, 92, 20, 0.4);
+      color: #8D5C14;
+      padding: clamp(8px, 2.2vw, 10px) clamp(16px, 3.5vw, 22px);
+      border-radius: 25px;
+      font-size: clamp(11px, 2.8vw, 13px);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 0 12px rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      animation: floatBounce 2.2s infinite ease-in-out;
+    }
+
+    /* Right-Side Vertical Page Navigator (Desktop, Tablet, Mobile) */
+    .page-dots-nav {
+      position: fixed;
+      right: max(14px, 2.2vw);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      pointer-events: auto;
+    }
+
+    .dot-btn {
+      background: transparent;
+      border: none;
+      padding: 8px; /* Generous touch target for mobile */
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .dot-btn .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(141, 92, 20, 0.3);
+      border: 1.5px solid #8D5C14;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .dot-btn:hover .dot {
+      background: rgba(141, 92, 20, 0.6);
+      transform: scale(1.25);
+    }
+
+    .dot-btn.active .dot {
+      background: #8D5C14;
+      border-color: #5a3c0a;
+      transform: scale(1.35);
+      box-shadow: 0 0 8px rgba(141, 92, 20, 0.5);
+    }
+
+    @media (max-width: 767px) {
+      .page-dots-nav {
+        right: 8px;
+        gap: 8px;
+      }
+
+      .dot-btn {
+        padding: 6px;
+      }
+
+      .dot-btn .dot {
+        width: 7px;
+        height: 7px;
+      }
+    }
+
+    /* Transition performance optimizations for smooth parallax physics */
+    #stage,
+    .venue-stage {
+      will-change: transform, opacity;
+      transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    }
+
+    /* Master 1080x2160 Invitation Card Canvas Container */
+    .invitation-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      border-radius: 2px;
+      background-color: #ede4ce;
+    }
+
+    #anim-canvas,
+    .section1-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      object-fit: cover;
+      border: none !important;
+      outline: none !important;
+    }
+
+    /* Editable Text Overlay Container */
+    .text-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .text-overlay.active {
+      opacity: 1;
+    }
+
+    /* Base Text Container & Typography setup */
+    .card-text-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      padding-left: 6%;
+      padding-right: 6%;
+      text-align: center;
+      box-sizing: border-box;
+      container-type: inline-size;
+      container-name: card-text;
+    }
+
+    /* Animation variants: Fade In (Details) vs Scale Up (Script Headings) */
+    .reveal-item {
+      will-change: opacity, transform;
+      text-align: center !important;
+      width: 100%;
+    }
+
+    .reveal-item.fade-in {
+      opacity: 0;
+      transition: opacity 0.95s ease-out;
+    }
+
+    .text-overlay.active .reveal-item.fade-in.revealed {
+      opacity: 1;
+    }
+
+    .reveal-item.scale-up {
+      opacity: 0;
+      transform: scale(0.65);
+      transition: opacity 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .text-overlay.active .reveal-item.scale-up.revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Base Styling Rules */
+    .ganesha-icon-wrap {
+      margin-top: 0;
+      margin-bottom: 2%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ganesha-img {
+      height: 16.5cqi;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.6));
+    }
+
+    .mantra-text {
+      font-family: 'Georgia', Georgia, serif;
+      color: #8D5C14;
+      font-weight: normal;
+      font-size: 4.0cqi;
+      letter-spacing: 0.8px;
+      line-height: 1.4;
+      margin-bottom: 2%;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+    }
+
+    .details-text {
+      font-family: 'Georgia', Georgia, serif;
+      color: #8D5C14;
+      font-weight: normal;
+      font-size: 3.7cqi;
+      line-height: 1.45;
+      margin-bottom: 3%;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+    }
+
+    .heading-script {
+      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      color: #B81616;
+      font-weight: normal;
+      line-height: 1.15;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    .heading-script.name-text {
+      font-size: 12.0cqi;
+      margin-top: 0.5%;
+      margin-bottom: 0.5%;
+    }
+
+    .heading-script.weds-text {
+      font-size: 12.0cqi;
+      margin-top: 1.5%;
+      margin-bottom: 1.5%;
+    }
+
+    /* Luxury Interactive Scratch Card Reveal Component */
+    .scratch-reveal-container {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      color: #8D5C14;
+      margin-top: 5%;
+      margin-bottom: 1%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      pointer-events: auto !important;
+    }
+
+    .scratch-reveal-title {
+      font-size: 2.42cqi;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.45em;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+
+    .scratch-card-box {
+      position: relative;
+      width: 76cqi;
+      height: 15cqi;
+      border-radius: 1.8cqi;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 0 10px rgba(212, 175, 55, 0.25);
+      border: 1px solid rgba(141, 92, 20, 0.45);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+      user-select: none;
+      touch-action: none;
+      pointer-events: auto !important;
+    }
+
+    .revealed-date-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 235, 215, 0.9));
+    }
+
+    .revealed-date-text {
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: normal;
+      font-size: 4.8cqi;
+      color: #8D5C14;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+    }
+
+    .scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: pointer;
+      touch-action: none;
+      pointer-events: auto !important;
+      transition: opacity 0.6s ease;
+    }
+
+    .scratch-canvas.faded {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .celebration-burst-canvas {
+      position: absolute;
+      pointer-events: none;
+      z-index: 50;
+      overflow: visible;
+    }
+
+    .scratch-hint-text {
+      position: absolute;
+      bottom: 0.6cqi;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', serif;
+      font-size: 1.6cqi;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8D5C14;
+      opacity: 0.85;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .scratch-hint-text.hidden {
+      opacity: 0;
+    }
+
+    /* Fixed prompt overlay staying visible at bottom until clicked */
+    .prompt-overlay {
+      position: fixed;
+      bottom: 30px;
+      bottom: max(20px, 4dvh);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 1;
+    }
+
+    .prompt-overlay.hidden {
+      opacity: 0 !important;
+      transform: translate(-50%, 15px) !important;
+      pointer-events: none !important;
+      display: none !important;
+    }
+
+    .prompt-chip {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.65);
+      color: #5a4316;
+      padding: clamp(10px, 2.5vw, 14px) clamp(18px, 4vw, 28px);
+      border-radius: 30px;
+      font-size: clamp(12px, 3.2vw, 15px);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14), 0 0 16px rgba(212, 175, 55, 0.35);
+      white-space: nowrap;
+      animation: pulseGlow 2.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 12px rgba(212, 175, 55, 0.25);
+        transform: scale(1);
+      }
+
+      50% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18), 0 0 24px rgba(212, 175, 55, 0.5);
+        transform: scale(1.04);
+      }
+    }
+
+    /* Preloader Progress Indicator */
+    .loader-bar-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(0, 0, 0, 0.05);
+      z-index: 200;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader-bar-wrap.completed {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #d4af37, #f7e7b6, #d4af37);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+      transition: width 0.15s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Subtle Preview Grid & Watermark Overlay -->
+  <div class="preview-watermark-grid" aria-hidden="true"></div>
+
+  <!-- Invisible Looping Background Music (Vaaroon - vaaroon.mp3) -->
+  <audio id="bg-audio" src="vaaroon.mp3" preload="auto" loop style="display: none;"></audio>
+
+  <div class="loader-bar-wrap" id="loader-wrap">
+    <div class="loader-bar" id="loader-bar"></div>
+  </div>
+
+  <main id="app-container" class="app-container scroll-locked">
+    <!-- SECTION 1: Main Invitation Section -->
+    <section class="card-section" id="section-1">
+      <div id="stage">
+        <!-- Master 1080x2160 Invitation Card Canvas Container -->
+        <div class="invitation-card" id="invitation-card">
+          <video id="firstpage-video" class="section1-video" src="Slides/First Page.mp4" playsinline muted preload="auto"></video>
+          <video id="secondpage-video" class="section1-video" src="Slides/Second Page.mp4" playsinline muted loop preload="auto" style="display: none;"></video>
+
+          <!-- Editable Text Layer -->
+          <div class="text-overlay" id="text-overlay">
+            <div class="card-text-container" id="card-text-container">
+              <!-- Lord Ganesha Icon -->
+              <div class="reveal-item fade-in ganesha-icon-wrap">
+                <img src="ganesha.png" class="ganesha-img" alt="Lord Ganesha">
+              </div>
+
+              <div class="reveal-item fade-in mantra-text">॥ श्री गणेशाय नमः ॥</div>
+              <div class="reveal-item fade-in mantra-text" style="font-size: 3.1cqi; line-height: 1.35; margin-bottom: 2%;">
+                With the heavenly blessings of our beloved Grandparents<br>
+                <span style="font-size: 2.85cqi; font-style: italic;">Late Smt. Uma & Late Sri Mahesh Lal Srivastava</span>
+              </div>
+
+              <div class="reveal-item fade-in details-text" style="margin-top: 2.5%;">
+                Mrs. Avantika & Mr. Awnish Kumar Srivastava<br>
+                cordially invite you to celebrate the wedding of
+              </div>
+
+              <div class="reveal-item fade-in heading-script name-text" style="margin-top: 1.5%;">Ayushi</div>
+              <div class="reveal-item fade-in heading-script weds-text">weds</div>
+              <div class="reveal-item fade-in heading-script name-text" style="margin-bottom: 2.5%;">Sudama</div>
+
+              <div class="reveal-item fade-in details-text">
+                Grandson of Late Smt. Urmila & Late Sri Vishnu Prakash Srivastava<br>
+                Son of Late Smt. Sonali & Mr. Pankaj Srivastava
+              </div>
+
+              <!-- Luxury Scratch-to-Reveal Wedding Date Card -->
+              <div class="reveal-item fade-in scratch-reveal-container" id="scratch-reveal-container">
+                <div class="scratch-reveal-title">Wedding Date</div>
+                <div class="scratch-card-box" id="scratch-card-box">
+                  <div class="revealed-date-layer">
+                    <div class="revealed-date-text">11–12 December 2026</div>
+                  </div>
+                  <canvas id="scratch-canvas" class="scratch-canvas"></canvas>
+                  <div class="scratch-hint-text" id="scratch-hint">Scratch to reveal</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prompt-overlay" id="prompt-overlay">
+          <div class="prompt-chip" id="prompt-text">Tap anywhere to play</div>
+        </div>
+
+        <!-- Interactive Scroll Hint Overlay -->
+        <div class="scroll-hint-overlay hidden" id="scroll-hint">
+          <div class="scroll-hint-chip">
+            <span>Scroll for Venue</span>
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Venue Slide (Appears on Scrolling Second Page) -->
+    <section class="card-section" id="section-2">
+      <div class="venue-stage" id="venue-stage">
+        <div class="venue-card-wrapper" id="venue-card-wrapper">
+          <img src="venue_slide.jpg" id="venue-card-img" class="venue-card-img" alt="Venue Details">
+
+          <!-- Pink Rose Petals Falling Canvas Layer (Section 2 Only) -->
+          <canvas id="pink-petals-canvas" class="pink-petals-canvas"></canvas>
+
+          <!-- Section 2 Header Monogram & Hashtag -->
+          <div class="venue-header-container">
+            <img src="as_monogram.png" class="pn-monogram-img" alt="Ayushi & Sudama Monogram">
+            <div class="hashtag-text">#AyushiSudama</div>
+          </div>
+
+          <!-- Refined Minimal Venue Card + Get Direction Overlay -->
+          <div class="venue-info-overlay" id="venue-info-overlay">
+            <div class="venue-info-card">
+              <h3 class="venue-heading">Venue</h3>
+              <h2 class="venue-name">Maeva Resorts</h2>
+              <p class="venue-location">Kursi Road, Lucknow</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Maeva+Hotels+and+Resorts+Kursi+Road+Lucknow" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="venue-directions-btn"
+                 aria-label="Get directions to Maeva Resorts on Google Maps">
+                <span>Get Direction</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Haldi Video Section -->
+    <section class="card-section" id="section-3">
+      <div class="haldi-stage" id="haldi-stage">
+        <div class="haldi-card-wrapper" id="haldi-card-wrapper">
+          <video id="haldi-video-1" class="haldi-video active" src="Slides/Haldi 1.mp4" playsinline muted preload="auto"></video>
+          <video id="haldi-video-2" class="haldi-video" src="Slides/Haldi 2.mp4" playsinline muted loop preload="auto"></video>
+
+          <!-- Haldi Caricature PNG (Ayushi & Sudama in golden lotus) -->
+          <img id="haldi-caricature-img" class="haldi-caricature-img" src="Golden Lotus Couple Portrait.png" alt="Haldi Caricature" />
+
+          <!-- Haldi Open Event Info Overlay -->
+          <div class="haldi-info-overlay" id="haldi-info-overlay">
+            <h2 class="haldi-heading initial-stagger">Haldi Ceremony</h2>
+            <div class="haldi-date initial-stagger">11 December 2026</div>
+
+            <!-- Tight Live Countdown Timer -->
+            <div class="haldi-countdown initial-stagger" id="haldi-countdown">
+              <div class="count-unit">
+                <span class="count-val" id="haldi-days">00</span>
+                <span class="count-lbl">Days</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="haldi-hours">00</span>
+                <span class="count-lbl">Hours</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="haldi-mins">00</span>
+                <span class="count-lbl">Mins</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="haldi-secs">00</span>
+                <span class="count-lbl">Secs</span>
+              </div>
+            </div>
+
+            <!-- Standalone View Details Button -->
+            <button class="haldi-details-btn initial-stagger" id="haldi-details-btn" aria-expanded="false">
+              <span>View Details</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Revealed Details Content -->
+            <div class="haldi-details-content" id="haldi-details-panel">
+              <div class="subtle-details-box">
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">TIME</div>
+                  <div class="open-detail-val">12 noon onwards</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">VENUE</div>
+                  <div class="open-detail-val">Maeva Resorts Lawn</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">DRESS CODE</div>
+                  <div class="open-detail-val">Men — Festive Yellow Attire</div>
+                  <div class="open-detail-val">Women — Festive Yellow Attire</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">COLOR PALETTE</div>
+                  <div class="open-palette-row">
+                    <span class="open-palette-txt">Yellow + Orange</span>
+                    <span class="swatch swatch-yellow" title="Yellow"></span>
+                    <span class="swatch swatch-orange" title="Orange"></span>
+                  </div>
+                </div>
+
+                <div class="open-lunch-banner stagger-item">
+                  <span>Festive Lunch to Follow</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Tilak followed by Sangeet Video Section -->
+    <section class="card-section" id="section-4">
+      <div class="sangeet-stage" id="sangeet-stage">
+        <div class="sangeet-card-wrapper" id="sangeet-card-wrapper">
+          <video id="sangeet-video" class="sangeet-video active" src="Slides/Sangeet 1.mp4" playsinline muted loop preload="auto"></video>
+
+          <!-- Sangeet Caricature PNG (Ayushi & Sudama Dancing) -->
+          <img id="sangeet-caricature-img" class="sangeet-caricature-img" src="Sparkling South Asian Wedding Portrait.png" alt="Sangeet Caricature" />
+
+          <!-- Sangeet Open Event Info Overlay -->
+          <div class="sangeet-info-overlay" id="sangeet-info-overlay">
+            <h2 class="sangeet-heading initial-stagger">Tilak&nbsp;&nbsp;&amp;&nbsp;Sangeet</h2>
+            <div class="sangeet-date initial-stagger">11 December 2026</div>
+
+            <!-- Tight Live Countdown Timer -->
+            <div class="sangeet-countdown initial-stagger" id="sangeet-countdown">
+              <div class="count-unit">
+                <span class="count-val" id="sangeet-days">00</span>
+                <span class="count-lbl">Days</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="sangeet-hours">00</span>
+                <span class="count-lbl">Hours</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="sangeet-mins">00</span>
+                <span class="count-lbl">Mins</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="sangeet-secs">00</span>
+                <span class="count-lbl">Secs</span>
+              </div>
+            </div>
+
+            <!-- Standalone View Details Button -->
+            <button class="sangeet-details-btn initial-stagger" id="sangeet-details-btn" aria-expanded="false">
+              <span>View Details</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Revealed Details Content -->
+            <div class="sangeet-details-content" id="sangeet-details-panel">
+              <div class="subtle-details-box">
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">TIME</div>
+                  <div class="open-detail-val">6 pm onwards</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">VENUE</div>
+                  <div class="open-detail-val">Maeva Resorts 1st floor Hall</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">SCHEDULE & HIGHLIGHTS</div>
+                  <div class="open-detail-val">Tilak Ceremony at 6:00 PM followed by Sangeet, Dance & Dinner</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">DRESS CODE</div>
+                  <div class="open-detail-val">Men — Tailored Suits / Kurta</div>
+                  <div class="open-detail-val">Women — Shimmer & Shine — Lehengas, Sarees & Gowns</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 7: Wedding Video Section -->
+    <section class="card-section" id="section-7">
+      <div class="wedding-stage" id="wedding-stage">
+        <div class="wedding-card-wrapper" id="wedding-card-wrapper">
+          <video id="wedding-video-1" class="wedding-video active" src="Slides/Wedding 1.mp4" playsinline muted preload="auto"></video>
+          <video id="wedding-video-2" class="wedding-video" src="Slides/Wedding 2.mp4" playsinline muted loop preload="auto"></video>
+
+          <!-- Wedding Caricature PNG (Ayushi & Sudama in Royal Wedding attire) -->
+          <img id="wedding-caricature-img" class="wedding-caricature-img" src="Illustrated Indian Wedding Couple Portrait.png" alt="Wedding Caricature" />
+
+          <!-- Wedding Open Event Info Overlay -->
+          <div class="wedding-info-overlay" id="wedding-info-overlay">
+            <h2 class="wedding-heading initial-stagger">Baraat&nbsp;&nbsp;&amp;&nbsp;Varmala</h2>
+            <div class="wedding-date initial-stagger">12 December 2026</div>
+
+            <!-- Tight Live Countdown Timer -->
+            <div class="wedding-countdown initial-stagger" id="wedding-countdown">
+              <div class="count-unit">
+                <span class="count-val" id="wedding-days">00</span>
+                <span class="count-lbl">Days</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="wedding-hours">00</span>
+                <span class="count-lbl">Hours</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="wedding-mins">00</span>
+                <span class="count-lbl">Mins</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="wedding-secs">00</span>
+                <span class="count-lbl">Secs</span>
+              </div>
+            </div>
+
+            <!-- Standalone View Details Button -->
+            <button class="wedding-details-btn initial-stagger" id="wedding-details-btn" aria-expanded="false">
+              <span>View Details</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Revealed Details Content -->
+            <div class="wedding-details-content" id="wedding-details-panel">
+              <div class="subtle-details-box">
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">VENUE</div>
+                  <div class="open-detail-val">Maeva Resorts Lawn</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">SCHEDULE & HIGHLIGHTS</div>
+                  <div class="open-detail-val">• Baraat - 2:00 pm</div>
+                  <div class="open-detail-val">• Varmaala - 5:30 pm</div>
+                  <div class="open-detail-val">• Phere Timing - 9:30 pm onwards</div>
+                  <div class="open-detail-val">• Royal Dinner to follow</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">DRESS CODE</div>
+                  <div class="open-detail-val">Men – Royal Traditional Attire</div>
+                  <div class="open-detail-val">Women – Royal Traditional Attire</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION RECEPTION: Reception Video Section -->
+    <section class="card-section" id="section-reception">
+      <div class="reception-stage" id="reception-stage">
+        <div class="reception-card-wrapper" id="reception-card-wrapper">
+          <video id="reception-video" class="reception-video" src="Reception.mp4" autoplay playsinline muted loop preload="auto"></video>
+
+          <!-- Reception Caricature PNG (Ayushi & Sudama in Reception attire) -->
+          <img id="reception-caricature-img" class="reception-caricature-img" src="Reception caricature.png" alt="Reception Caricature" />
+
+          <!-- Reception Open Event Info Overlay -->
+          <div class="reception-info-overlay" id="reception-info-overlay">
+            <h2 class="reception-heading initial-stagger">Reception</h2>
+            <div class="reception-date initial-stagger">12.12.2026</div>
+
+            <!-- Tight Live Countdown Timer -->
+            <div class="reception-countdown initial-stagger" id="reception-countdown">
+              <div class="count-unit">
+                <span class="count-val" id="reception-days">00</span>
+                <span class="count-lbl">Days</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="reception-hours">00</span>
+                <span class="count-lbl">Hours</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="reception-mins">00</span>
+                <span class="count-lbl">Mins</span>
+              </div>
+              <span class="count-sep">:</span>
+              <div class="count-unit">
+                <span class="count-val" id="reception-secs">00</span>
+                <span class="count-lbl">Secs</span>
+              </div>
+            </div>
+
+            <!-- Standalone View Details Button -->
+            <button class="reception-details-btn initial-stagger" id="reception-details-btn" aria-expanded="false">
+              <span>View Details</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Revealed Details Content -->
+            <div class="reception-details-content" id="reception-details-panel">
+              <div class="subtle-details-box">
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">TIME</div>
+                  <div class="open-detail-val">7:30 pm onwards</div>
+                </div>
+
+                <div class="open-detail-group stagger-item">
+                  <div class="open-detail-lbl">VENUE</div>
+                  <div class="open-detail-val">Maeva Lawn</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: Last Page Video Section with Interactive RSVP -->
+    <section class="card-section" id="section-9">
+      <div class="lastpage-stage" id="lastpage-stage">
+        <div class="lastpage-card-wrapper" id="lastpage-card-wrapper">
+          <video id="lastpage-video" class="lastpage-video" src="Slides/Last Page 1.mp4" playsinline muted loop preload="auto"></video>
+
+          <!-- RSVP & Warm Regards Info Overlay -->
+          <div class="rsvp-info-overlay" id="rsvp-info-overlay">
+            <h2 class="rsvp-heading reveal-item">R.S.V.P.</h2>
+
+            <!-- Interactive RSVP Form -->
+            <form class="rsvp-form reveal-item" id="rsvp-form" action="https://formsubmit.co/dipanshuvaibhav82@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="New Wedding RSVP Submission - Ayushi & Sudama!" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <div class="rsvp-field-row">
+                <input type="text" id="rsvp-name" name="name" class="rsvp-input" placeholder="Your Full Name" required />
+              </div>
+
+              <div class="rsvp-field-grid">
+                <select id="rsvp-guests" name="Number of Guests" class="rsvp-select">
+                  <option value="1 Guest">1 Guest</option>
+                  <option value="2 Guests" selected>2 Guests</option>
+                  <option value="3 Guests">3 Guests</option>
+                  <option value="4 Guests">4 Guests</option>
+                  <option value="Family">Family</option>
+                </select>
+
+                <select id="rsvp-attendance" name="Attendance Status" class="rsvp-select">
+                  <option value="Joyfully Accepts">Joyfully Accepts</option>
+                  <option value="Regretfully Declines">Regretfully Declines</option>
+                </select>
+              </div>
+
+              <button type="submit" class="rsvp-submit-btn" id="rsvp-submit-btn">
+                <span>Confirm Attendance</span>
+              </button>
+
+              <div class="rsvp-success-msg" id="rsvp-success-msg">
+                Thank you! Your RSVP has been confirmed. We look forward to celebrating with you!
+              </div>
+            </form>
+
+            <!-- Warm Regards & Family Section -->
+            <div class="rsvp-regards-block reveal-item">
+              <div class="rsvp-regards-title">Warm Regards</div>
+              <div class="rsvp-family-name">Srivastava Family</div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="rsvp-contacts-block reveal-item">
+              <div class="rsvp-contact-item">
+                <span class="contact-name">Ayushi Srivastava (Bride)</span>
+                <span class="contact-sep">:</span>
+                <a href="tel:+919721261711" class="contact-phone">+91-9721261711</a>
+              </div>
+              <div class="rsvp-contact-item">
+                <span class="contact-name">Sudama Srivastava (Groom)</span>
+                <span class="contact-sep">:</span>
+                <a href="tel:+917294874991" class="contact-phone">+91-7294874991</a>
+              </div>
+              <div class="rsvp-contact-item">
+                <span class="contact-name">Atishi Srivastava (Bride's sister)</span>
+                <span class="contact-sep">:</span>
+                <a href="tel:+917978681592" class="contact-phone">+91-7978681592</a>
+              </div>
+              <div class="rsvp-contact-item">
+                <span class="contact-name">Sharda Srivastava (Groom's sister)</span>
+                <span class="contact-sep">:</span>
+                <a href="tel:+919199067501" class="contact-phone">+91-9199067501</a>
+              </div>
+            </div>
+
+            <!-- No Gifts Please Note -->
+            <div class="rsvp-nogifts-block reveal-item">
+              <p class="rsvp-nogifts-text">
+                <span>No Gifts Please,</span><br />
+                <span>Your blessings are the most precious gift.</span>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Right-Side Fixed Vertical Page Navigator (Desktop, Tablet, Mobile) -->
+  <nav class="page-dots-nav" id="page-dots-nav" aria-label="Page Navigation">
+    <button class="dot-btn active" data-section="section-1" aria-label="Page 1: Main Invitation">
+      <span class="dot"></span>
+    </button>
+    <button class="dot-btn" data-section="section-2" aria-label="Page 2: Venue Details">
+      <span class="dot"></span>
+    </button>
+    <button class="dot-btn" data-section="section-3" aria-label="Page 3: Haldi Ceremony">
+      <span class="dot"></span>
+    </button>
+    <button class="dot-btn" data-section="section-4" aria-label="Page 4: Tilak & Sangeet">
+      <span class="dot"></span>
+    </button>
+    <button class="dot-btn" data-section="section-7" aria-label="Page 5: Baraat & Varmala">
+      <span class="dot"></span>
+    </button>
+    <button class="dot-btn" data-section="section-reception" aria-label="Page 6: Reception">
+      <span class="dot"></span>
+    </button>
+    <button class="dot-btn" data-section="section-9" aria-label="Page 7: RSVP & Contacts">
+      <span class="dot"></span>
+    </button>
+  </nav>
+
+  <script>
+    (function () {
+      const promptOverlay = document.getElementById('prompt-overlay');
+      const textOverlay = document.getElementById('text-overlay');
+      const cardTextContainer = document.getElementById('card-text-container');
+      const loaderWrap = document.getElementById('loader-wrap');
+      const loaderBar = document.getElementById('loader-bar');
+
+      const firstVideo = document.getElementById('firstpage-video');
+      const secondVideo = document.getElementById('secondpage-video');
+
+      let hasStarted = false;
+      let isTextRevealing = false;
+      let lastInteractionTime = 0;
+
+      const NATIVE_WIDTH = 1080;
+      const NATIVE_HEIGHT = 2160;
+      const CREME_COLOR = '#ede4ce';
+
+      function resizeCanvas() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+
+        // Natural un-stretched 1:1 aspect-ratio width for height vh (1080:2160 = 0.5 ratio)
+        const idealW = vh * (NATIVE_WIDTH / NATIVE_HEIGHT);
+        // Maximum allowed side stretch limit (up to 20% wider stretch)
+        const maxStretchedW = idealW * 1.20;
+
+        // Background card container width (stretches up to 20% to fit screen width; caps at 20% for creme border)
+        const cardW = Math.min(vw, maxStretchedW);
+        const cardH = vh;
+        const cardX = (vw - cardW) / 2;
+
+        const invCard = document.getElementById('invitation-card');
+        if (invCard) {
+          invCard.style.left = cardX + 'px';
+          invCard.style.top = '0px';
+          invCard.style.width = cardW + 'px';
+          invCard.style.height = cardH + 'px';
+        }
+
+        // Un-stretched text overlay container (enlarged by 15% on all devices, centered inside cardW)
+        if (cardTextContainer) {
+          const textW = Math.min(idealW * 1.15, cardW);
+          cardTextContainer.style.width = textW + 'px';
+          cardTextContainer.style.left = ((cardW - textW) / 2) + 'px';
+          cardTextContainer.style.top = '0px';
+          cardTextContainer.style.height = cardH + 'px';
+        }
+
+        const venueWrap = document.getElementById('venue-card-wrapper');
+        if (venueWrap) {
+          venueWrap.style.left = cardX + 'px';
+          venueWrap.style.top = '0px';
+          venueWrap.style.width = cardW + 'px';
+          venueWrap.style.height = cardH + 'px';
+        }
+
+        const venueImg = document.getElementById('venue-card-img');
+        if (venueImg) {
+          venueImg.style.left = '0px';
+          venueImg.style.top = '0px';
+          venueImg.style.width = cardW + 'px';
+          venueImg.style.height = cardH + 'px';
+        }
+
+
+        const sangeetWrap = document.getElementById('sangeet-card-wrapper');
+        if (sangeetWrap) {
+          sangeetWrap.style.left = cardX + 'px';
+          sangeetWrap.style.top = '0px';
+          sangeetWrap.style.width = cardW + 'px';
+          sangeetWrap.style.height = cardH + 'px';
+        }
+
+        const haldiWrap = document.getElementById('haldi-card-wrapper');
+        if (haldiWrap) {
+          haldiWrap.style.left = cardX + 'px';
+          haldiWrap.style.top = '0px';
+          haldiWrap.style.width = cardW + 'px';
+          haldiWrap.style.height = cardH + 'px';
+        }
+
+        const weddingWrap = document.getElementById('wedding-card-wrapper');
+        if (weddingWrap) {
+          weddingWrap.style.left = cardX + 'px';
+          weddingWrap.style.top = '0px';
+          weddingWrap.style.width = cardW + 'px';
+          weddingWrap.style.height = cardH + 'px';
+        }
+
+        const receptionWrap = document.getElementById('reception-card-wrapper');
+        if (receptionWrap) {
+          receptionWrap.style.left = cardX + 'px';
+          receptionWrap.style.top = '0px';
+          receptionWrap.style.width = cardW + 'px';
+          receptionWrap.style.height = cardH + 'px';
+        }
+
+        const lastpageWrap = document.getElementById('lastpage-card-wrapper');
+        if (lastpageWrap) {
+          lastpageWrap.style.left = cardX + 'px';
+          lastpageWrap.style.top = '0px';
+          lastpageWrap.style.width = cardW + 'px';
+          lastpageWrap.style.height = cardH + 'px';
+        }
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(cardW * dpr);
+        canvas.height = Math.round(cardH * dpr);
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        renderFrame(currentCut, currentFrameIndex);
+      }
+
+      function renderFrame(cut, index) {
+        const cw = canvas.width;
+        const ch = canvas.height;
+
+        // Layer 1: Solid Creme Border & Background Fill
+        ctx.fillStyle = CREME_COLOR;
+        ctx.fillRect(0, 0, cw, ch);
+
+        const frameArray = (cut === 'first') ? firstCutFrames : secondCutFrames;
+        if (!frameArray[index] || !frameArray[index].complete) return;
+        const img = frameArray[index];
+
+        ctx.drawImage(img, 0, 0, cw, ch);
+      }
+
+      // Interactive Scratch-to-Reveal Coupon Engine for Wedding Date
+      function initScratchCard() {
+        const scratchCanvas = document.getElementById('scratch-canvas');
+        const scratchBox = document.getElementById('scratch-card-box');
+        const scratchHint = document.getElementById('scratch-hint');
+        if (!scratchCanvas || !scratchBox) return;
+
+        const scratchCtx = scratchCanvas.getContext('2d', { willReadFrequently: true });
+        let isScratching = false;
+        let hasRevealed = false;
+        let lastX = 0;
+        let lastY = 0;
+        let scratchCount = 0;
+
+        function setupScratchCanvas() {
+          const rect = scratchBox.getBoundingClientRect();
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          
+          const width = rect.width || 280;
+          const height = rect.height || 55;
+
+          scratchCanvas.width = Math.round(width * dpr);
+          scratchCanvas.height = Math.round(height * dpr);
+
+          scratchCtx.save();
+          scratchCtx.scale(dpr, dpr);
+
+          // Draw Luxury Gold / Cream Metallic Scratch Surface Pattern
+          const grad = scratchCtx.createLinearGradient(0, 0, width, height);
+          grad.addColorStop(0, '#e6d3a7');
+          grad.addColorStop(0.35, '#f7edc5');
+          grad.addColorStop(0.7, '#d4af37');
+          grad.addColorStop(1, '#c59b27');
+
+          scratchCtx.fillStyle = grad;
+          scratchCtx.fillRect(0, 0, width, height);
+
+          // Subtle gold frame outline
+          scratchCtx.strokeStyle = 'rgba(141, 92, 20, 0.45)';
+          scratchCtx.lineWidth = 2;
+          scratchCtx.strokeRect(3, 3, width - 6, height - 6);
+
+          // Subtle invitation text on canvas surface
+          scratchCtx.font = '600 12px Palatino, "Palatino Linotype", "Book Antiqua", serif';
+          scratchCtx.fillStyle = 'rgba(141, 92, 20, 0.85)';
+          scratchCtx.textAlign = 'center';
+          scratchCtx.textBaseline = 'middle';
+          scratchCtx.fillText('✦  SCRATCH TO REVEAL  ✦', width / 2, height / 2);
+
+          scratchCtx.restore();
+        }
+
+        setupScratchCanvas();
+
+        function getCanvasCoords(e) {
+          const rect = scratchCanvas.getBoundingClientRect();
+          const scaleX = scratchCanvas.width / (rect.width || 1);
+          const scaleY = scratchCanvas.height / (rect.height || 1);
+
+          let clientX = e.clientX;
+          let clientY = e.clientY;
+
+          if (clientX === undefined && e.touches && e.touches.length > 0) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+          }
+
+          return {
+            x: ((clientX || 0) - rect.left) * scaleX,
+            y: ((clientY || 0) - rect.top) * scaleY
+          };
+        }
+
+        function eraseSegment(x1, y1, x2, y2) {
+          if (hasRevealed) return;
+
+          scratchCtx.save();
+          scratchCtx.globalCompositeOperation = 'destination-out';
+          scratchCtx.strokeStyle = 'rgba(0,0,0,1)';
+          scratchCtx.fillStyle = 'rgba(0,0,0,1)';
+          scratchCtx.lineWidth = Math.max(scratchCanvas.width * 0.12, 28);
+          scratchCtx.lineCap = 'round';
+          scratchCtx.lineJoin = 'round';
+
+          scratchCtx.beginPath();
+          scratchCtx.moveTo(x1, y1);
+          scratchCtx.lineTo(x2, y2);
+          scratchCtx.stroke();
+
+          // Smooth brush head at endpoint
+          scratchCtx.beginPath();
+          scratchCtx.arc(x2, y2, scratchCtx.lineWidth / 2, 0, Math.PI * 2);
+          scratchCtx.fill();
+
+          scratchCtx.restore();
+
+          if (scratchHint && !scratchHint.classList.contains('hidden')) {
+            scratchHint.classList.add('hidden');
+          }
+
+          scratchCount++;
+          if (scratchCount % 5 === 0) {
+            checkScratchProgress();
+          }
+        }
+
+        function checkScratchProgress() {
+          if (hasRevealed) return;
+          const width = scratchCanvas.width;
+          const height = scratchCanvas.height;
+          if (width === 0 || height === 0) return;
+
+          try {
+            const imageData = scratchCtx.getImageData(0, 0, width, height);
+            const pixels = imageData.data;
+            let clearPixels = 0;
+            const sampleStep = 16;
+            const totalSampled = pixels.length / sampleStep;
+
+            for (let i = 3; i < pixels.length; i += sampleStep) {
+              if (pixels[i] === 0) {
+                clearPixels++;
+              }
+            }
+
+            const ratio = clearPixels / totalSampled;
+            if (ratio >= 0.40) {
+              triggerFullReveal();
+            }
+          } catch (err) {
+            if (scratchCount > 18) triggerFullReveal();
+          }
+        }
+
+        let petalsTriggered = false;
+
+        function triggerPetalBurst() {
+          if (petalsTriggered) return;
+          petalsTriggered = true;
+
+          // Respect user prefers-reduced-motion
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+          }
+
+          // Full-viewport celebration canvas anchored to document.body
+          const celebCanvas = document.createElement('canvas');
+          celebCanvas.style.position = 'fixed';
+          celebCanvas.style.top = '0';
+          celebCanvas.style.left = '0';
+          celebCanvas.style.width = '100vw';
+          celebCanvas.style.height = '100vh';
+          celebCanvas.style.pointerEvents = 'none';
+          celebCanvas.style.zIndex = '999';
+          document.body.appendChild(celebCanvas);
+
+          const vw = window.innerWidth;
+          const vh = window.innerHeight;
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+          celebCanvas.width = Math.round(vw * dpr);
+          celebCanvas.height = Math.round(vh * dpr);
+
+          const ctx = celebCanvas.getContext('2d');
+          ctx.scale(dpr, dpr);
+
+          const palette = ['#e884a1', '#d64974', '#f7c5d3', '#f5e6d3', '#c93662', '#e29db1', '#d4af37', '#f7edc5', '#c59b27'];
+          const particles = [];
+          const PARTICLE_COUNT_PER_SIDE = 35;
+
+          // Origins at exact left (0) and right (vw) edges of the webpage screen
+          const leftOriginX = 0;
+          const rightOriginX = vw;
+          const originY = vh * 0.55;
+
+          function createParticle(side) {
+            const isLeft = side === 'left';
+            const originX = isLeft ? leftOriginX : rightOriginX;
+            
+            // Left edge particles shoot inward towards right/up, Right edge particles shoot inward towards left/up
+            const angle = isLeft ? (-Math.PI * 0.12 - Math.random() * Math.PI * 0.35) : (-Math.PI * 0.88 + Math.random() * Math.PI * 0.35);
+            const speed = 7 + Math.random() * 11;
+
+            return {
+              x: originX,
+              y: originY + (Math.random() - 0.5) * (vh * 0.2),
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              sizeW: 5 + Math.random() * 8,
+              sizeH: 9 + Math.random() * 12,
+              color: palette[Math.floor(Math.random() * palette.length)],
+              rotation: Math.random() * Math.PI * 2,
+              vRot: (Math.random() - 0.5) * 0.25,
+              opacity: 1,
+              gravity: 0.18 + Math.random() * 0.1,
+              drag: 0.965 + Math.random() * 0.015,
+              shape: Math.random() > 0.4 ? 'rect' : 'ribbon'
+            };
+          }
+
+          for (let i = 0; i < PARTICLE_COUNT_PER_SIDE; i++) {
+            particles.push(createParticle('left'));
+            particles.push(createParticle('right'));
+          }
+
+          let startTime = null;
+          const DURATION = 2400; // 2.4 seconds total celebration
+
+          function animateBurst(now) {
+            if (!startTime) startTime = now;
+            const elapsed = now - startTime;
+            const progress = elapsed / DURATION;
+
+            ctx.clearRect(0, 0, vw, vh);
+
+            let activeCount = 0;
+            particles.forEach((p) => {
+              if (p.opacity <= 0) return;
+              activeCount++;
+
+              p.x += p.vx;
+              p.y += p.vy;
+              p.vy += p.gravity;
+              p.vx *= p.drag;
+              p.vy *= p.drag;
+              p.rotation += p.vRot;
+
+              if (progress > 0.6) {
+                p.opacity = Math.max(0, 1 - (progress - 0.6) / 0.4);
+              }
+
+              ctx.save();
+              ctx.translate(p.x, p.y);
+              ctx.rotate(p.rotation);
+              ctx.globalAlpha = p.opacity;
+              ctx.fillStyle = p.color;
+
+              if (p.shape === 'rect') {
+                ctx.fillRect(-p.sizeW / 2, -p.sizeH / 2, p.sizeW, p.sizeH);
+              } else {
+                ctx.beginPath();
+                ctx.moveTo(-p.sizeW / 2, -p.sizeH / 2);
+                ctx.lineTo(p.sizeW / 2, -p.sizeH / 4);
+                ctx.lineTo(p.sizeW / 3, p.sizeH / 2);
+                ctx.lineTo(-p.sizeW / 2, p.sizeH / 3);
+                ctx.closePath();
+                ctx.fill();
+              }
+
+              ctx.restore();
+            });
+
+            if (progress < 1 && activeCount > 0) {
+              requestAnimationFrame(animateBurst);
+            } else {
+              if (celebCanvas && celebCanvas.parentNode) {
+                celebCanvas.parentNode.removeChild(celebCanvas);
+              }
+            }
+          }
+
+          requestAnimationFrame(animateBurst);
+        }
+
+        function triggerFullReveal() {
+          if (hasRevealed) return;
+          hasRevealed = true;
+
+          scratchCanvas.classList.add('faded');
+          if (scratchHint) scratchHint.classList.add('hidden');
+
+          triggerPetalBurst();
+
+          setTimeout(() => {
+            scratchCanvas.style.display = 'none';
+          }, 650);
+        }
+
+        function onPointerDown(e) {
+          if (hasRevealed) return;
+          isScratching = true;
+          try {
+            if (e.pointerId !== undefined) {
+              scratchCanvas.setPointerCapture(e.pointerId);
+            }
+          } catch (err) {}
+
+          const coords = getCanvasCoords(e);
+          lastX = coords.x;
+          lastY = coords.y;
+          eraseSegment(lastX, lastY, lastX, lastY);
+        }
+
+        function onPointerMove(e) {
+          if (!isScratching || hasRevealed) return;
+          if (e.cancelable) e.preventDefault();
+
+          const coords = getCanvasCoords(e);
+          eraseSegment(lastX, lastY, coords.x, coords.y);
+          lastX = coords.x;
+          lastY = coords.y;
+        }
+
+        function onPointerUp(e) {
+          if (isScratching) {
+            isScratching = false;
+            try {
+              if (e && e.pointerId !== undefined) {
+                scratchCanvas.releasePointerCapture(e.pointerId);
+              }
+            } catch (err) {}
+            checkScratchProgress();
+          }
+        }
+
+        // Dedicated Touch Event Listeners for Mobile Finger Rubbing (iOS Safari & Android Chrome)
+        scratchCanvas.addEventListener('touchstart', (e) => {
+          if (hasRevealed) return;
+          if (e.touches && e.touches.length === 1) {
+            if (e.cancelable) e.preventDefault();
+            isScratching = true;
+            const coords = getCanvasCoords(e.touches[0]);
+            lastX = coords.x;
+            lastY = coords.y;
+            eraseSegment(lastX, lastY, lastX, lastY);
+          }
+        }, { passive: false });
+
+        scratchCanvas.addEventListener('touchmove', (e) => {
+          if (!isScratching || hasRevealed) return;
+          if (e.touches && e.touches.length === 1) {
+            if (e.cancelable) e.preventDefault();
+            const coords = getCanvasCoords(e.touches[0]);
+            eraseSegment(lastX, lastY, coords.x, coords.y);
+            lastX = coords.x;
+            lastY = coords.y;
+          }
+        }, { passive: false });
+
+        scratchCanvas.addEventListener('touchend', (e) => {
+          if (isScratching) {
+            isScratching = false;
+            checkScratchProgress();
+          }
+        }, { passive: true });
+
+        // Mouse Events for Desktop Click & Drag
+        scratchCanvas.addEventListener('mousedown', onPointerDown);
+        scratchCanvas.addEventListener('mousemove', onPointerMove);
+        window.addEventListener('mouseup', onPointerUp);
+
+        window.addEventListener('resize', () => {
+          if (!hasRevealed) {
+            setupScratchCanvas();
+          }
+        });
+      }
+
+      initScratchCard();
+
+      function formatFramePath(cut, index) {
+        const padNum = String(index + 1).padStart(3, '0');
+        const folder = (cut === 'first') ? 'First Cut' : 'Second Cut';
+        return `${folder}/ezgif-frame-${padNum}.jpg`;
+      }
+
+      function triggerSequentialTextReveal() {
+        if (isTextRevealing) return;
+        isTextRevealing = true;
+
+        // Unlock full-page smooth snap scrolling once First Cut animation completes
+        const appContainer = document.getElementById('app-container');
+        const scrollHint = document.getElementById('scroll-hint');
+        if (appContainer) {
+          appContainer.classList.remove('scroll-locked');
+        }
+        if (scrollHint) {
+          setTimeout(() => {
+            scrollHint.classList.remove('hidden');
+          }, 3200);
+        }
+
+        textOverlay.classList.add('active');
+        const items = cardTextContainer.querySelectorAll('.reveal-item');
+        items.forEach((item) => item.classList.remove('revealed'));
+
+        // Delay mapping to reveal Ganesha PNG, Mantras & Parents paragraph TOGETHER
+        const itemDelays = [
+          200,  // Ganesha Icon
+          200,  // Mantra (Ganesh)
+          200,  // Grandparents Blessings
+          200,  // Parents Invitation paragraph
+          850,  // Ayushi
+          1400, // weds
+          1950, // Sudama
+          2500, // Daughter & Son Family Details
+          3050  // Luxury Scratch Date Card
+        ];
+
+        items.forEach((item, idx) => {
+          const delay = itemDelays[idx] !== undefined ? itemDelays[idx] : (200 + idx * 550);
+          setTimeout(() => {
+            item.classList.add('revealed');
+          }, delay);
+        });
+      }
+
+      function onFirstVideoEnded() {
+        if (firstVideo) firstVideo.style.display = 'none';
+        if (secondVideo) {
+          secondVideo.style.display = 'block';
+          secondVideo.play().catch(err => console.log('Second video play error:', err));
+        }
+        // Text reveals exactly 1 second (1000ms) after playing Second Page.mp4
+        setTimeout(() => {
+          triggerSequentialTextReveal();
+        }, 1000);
+      }
+
+      if (firstVideo) {
+        firstVideo.addEventListener('ended', onFirstVideoEnded);
+      }
+
+      let audioUnlocked = false;
+
+      function unlockAndPlayAudio() {
+        if (audioUnlocked) return;
+        const audio = document.getElementById('bg-audio');
+        if (!audio) return;
+
+        try {
+          const playPromise = audio.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              audioUnlocked = true;
+              ['touchstart', 'touchend', 'pointerdown', 'click', 'keydown'].forEach(evt => {
+                window.removeEventListener(evt, unlockAndPlayAudio, true);
+                document.removeEventListener(evt, unlockAndPlayAudio, true);
+              });
+            }).catch(err => {
+              console.log('Mobile audio unlock pending user gesture:', err);
+            });
+          }
+        } catch (err) {
+          console.log('Audio unlock error:', err);
+        }
+      }
+
+      // Attach capture-phase interaction listeners on window & document to unlock iOS Safari & Android Chrome
+      ['touchstart', 'touchend', 'pointerdown', 'click', 'keydown'].forEach(evt => {
+        window.addEventListener(evt, unlockAndPlayAudio, { capture: true, passive: true });
+        document.addEventListener(evt, unlockAndPlayAudio, { capture: true, passive: true });
+      });
+
+      function startAnimation() {
+        unlockAndPlayAudio();
+
+        if (!hasStarted) {
+          hasStarted = true;
+          if (promptOverlay) promptOverlay.classList.add('hidden');
+        }
+
+        isTextRevealing = false;
+        if (textOverlay) textOverlay.classList.remove('active');
+        const items = cardTextContainer ? cardTextContainer.querySelectorAll('.reveal-item') : [];
+        items.forEach((item) => item.classList.remove('revealed'));
+
+        if (firstVideo) {
+          firstVideo.style.display = 'block';
+          if (secondVideo) secondVideo.style.display = 'none';
+          firstVideo.currentTime = 0;
+          const p = firstVideo.play();
+          if (p !== undefined) {
+            p.catch(err => {
+              console.log('First video play error:', err);
+              onFirstVideoEnded();
+            });
+          }
+        } else {
+          onFirstVideoEnded();
+        }
+      }
+
+      function handleUserInteraction(e) {
+        if (hasStarted) return;
+        const now = Date.now();
+        if (now - lastInteractionTime < 300) return; // Debounce touchstart + click
+        lastInteractionTime = now;
+
+        startAnimation();
+      }
+
+      // Smooth scroll hint & page navigator dot observer
+      const appContainer = document.getElementById('app-container');
+      const scrollHint = document.getElementById('scroll-hint');
+      const section2 = document.getElementById('section-2');
+
+      if (appContainer) {
+        appContainer.addEventListener('scroll', () => {
+          const scrollTop = appContainer.scrollTop;
+          const vh = window.innerHeight || 1;
+          const progress = Math.min(Math.max(scrollTop / vh, 0), 1);
+
+          if (scrollHint) {
+            if (progress > 0.1) {
+              scrollHint.classList.add('hidden');
+            } else if (!appContainer.classList.contains('scroll-locked')) {
+              scrollHint.classList.remove('hidden');
+            }
+          }
+        }, { passive: true });
+      }
+
+      // Right-Side Page Navigator Dot Controller using IntersectionObserver
+      const dotButtons = document.querySelectorAll('.page-dots-nav .dot-btn');
+      const sections = document.querySelectorAll('.card-section');
+
+      if (window.IntersectionObserver) {
+        const observerOptions = {
+          root: appContainer,
+          threshold: 0.4
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const sectionId = entry.target.id;
+              dotButtons.forEach((btn) => {
+                if (btn.getAttribute('data-section') === sectionId) {
+                  btn.classList.add('active');
+                } else {
+                  btn.classList.remove('active');
+                }
+              });
+
+              if (sectionId === 'section-1') {
+                if (window.stopSection2Petals) window.stopSection2Petals();
+                if (secondVideo && secondVideo.style.display !== 'none' && secondVideo.paused) {
+                  secondVideo.play().catch(e => {});
+                }
+                if (window.onSection3Leave) window.onSection3Leave();
+                if (window.onSection4Leave) window.onSection4Leave();
+                if (window.onSection7Leave) window.onSection7Leave();
+                if (window.onReceptionLeave) window.onReceptionLeave();
+                if (window.onSection9Leave) window.onSection9Leave();
+              } else if (sectionId === 'section-2') {
+                const venueWrapper = document.getElementById('venue-card-wrapper');
+                if (venueWrapper) venueWrapper.classList.add('animated-in');
+                if (window.startSection2Petals) window.startSection2Petals();
+                if (window.onSection3Leave) window.onSection3Leave();
+                if (window.onSection4Leave) window.onSection4Leave();
+                if (window.onSection7Leave) window.onSection7Leave();
+                if (window.onReceptionLeave) window.onReceptionLeave();
+                if (window.onSection9Leave) window.onSection9Leave();
+              } else if (sectionId === 'section-3') {
+                if (window.stopSection2Petals) window.stopSection2Petals();
+                if (window.onSection3Enter) window.onSection3Enter();
+                if (window.onSection4Leave) window.onSection4Leave();
+                if (window.onSection7Leave) window.onSection7Leave();
+                if (window.onReceptionLeave) window.onReceptionLeave();
+                if (window.onSection9Leave) window.onSection9Leave();
+              } else if (sectionId === 'section-4') {
+                if (window.stopSection2Petals) window.stopSection2Petals();
+                if (window.onSection3Leave) window.onSection3Leave();
+                if (window.onSection4Enter) window.onSection4Enter();
+                if (window.onSection7Leave) window.onSection7Leave();
+                if (window.onReceptionLeave) window.onReceptionLeave();
+                if (window.onSection9Leave) window.onSection9Leave();
+              } else if (sectionId === 'section-7') {
+                if (window.stopSection2Petals) window.stopSection2Petals();
+                if (window.onSection3Leave) window.onSection3Leave();
+                if (window.onSection4Leave) window.onSection4Leave();
+                if (window.onSection7Enter) window.onSection7Enter();
+                if (window.onReceptionLeave) window.onReceptionLeave();
+                if (window.onSection9Leave) window.onSection9Leave();
+              } else if (sectionId === 'section-reception') {
+                if (window.stopSection2Petals) window.stopSection2Petals();
+                if (window.onSection3Leave) window.onSection3Leave();
+                if (window.onSection4Leave) window.onSection4Leave();
+                if (window.onSection7Leave) window.onSection7Leave();
+                if (window.onReceptionEnter) window.onReceptionEnter();
+                if (window.onSection9Leave) window.onSection9Leave();
+              } else if (sectionId === 'section-9') {
+                if (window.stopSection2Petals) window.stopSection2Petals();
+                if (window.onSection3Leave) window.onSection3Leave();
+                if (window.onSection4Leave) window.onSection4Leave();
+                if (window.onSection7Leave) window.onSection7Leave();
+                if (window.onReceptionLeave) window.onReceptionLeave();
+                if (window.onSection9Enter) window.onSection9Enter();
+              } else {
+                if (window.stopSection2Petals) window.stopSection2Petals();
+                if (window.onSection3Leave) window.onSection3Leave();
+                if (window.onSection4Leave) window.onSection4Leave();
+                if (window.onSection7Leave) window.onSection7Leave();
+                if (window.onReceptionLeave) window.onReceptionLeave();
+                if (window.onSection9Leave) window.onSection9Leave();
+              }
+            }
+          });
+        }, observerOptions);
+
+        // Section 3 Video Controller Engine: Haldi Ceremony (Plays Haldi 1 first, then seamless loop on Haldi 2 + Caricature)
+        function initSection3VideoController() {
+          const v1 = document.getElementById('haldi-video-1');
+          const v2 = document.getElementById('haldi-video-2');
+          if (!v1 || !v2) return;
+
+          let hasV1Ended = false;
+          let isSection3Active = false;
+          let revealTimer = null;
+          let caricatureTimer = null;
+          let hasCaricatureRevealed = false;
+          let hasHaldiTextRevealed = false;
+
+          v2.load();
+
+          // Live Countdown Timer to 11 Dec 2026 12:00 PM IST (Haldi)
+          const targetDate = new Date('2026-12-11T12:00:00+05:30').getTime();
+          function updateHaldiCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            const daysEl = document.getElementById('haldi-days');
+            const hoursEl = document.getElementById('haldi-hours');
+            const minsEl = document.getElementById('haldi-mins');
+            const secsEl = document.getElementById('haldi-secs');
+            if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+            if (diff <= 0) {
+              daysEl.textContent = '00';
+              hoursEl.textContent = '00';
+              minsEl.textContent = '00';
+              secsEl.textContent = '00';
+              return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.textContent = days < 10 ? '0' + days : days;
+            hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+            minsEl.textContent = mins < 10 ? '0' + mins : mins;
+            secsEl.textContent = secs < 10 ? '0' + secs : secs;
+          }
+          updateHaldiCountdown();
+          setInterval(updateHaldiCountdown, 1000);
+
+          // View Details Collapsible Panel Listener
+          const detailsBtn = document.getElementById('haldi-details-btn');
+          const detailsPanel = document.getElementById('haldi-details-panel');
+          if (detailsBtn && detailsPanel) {
+            detailsBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const isOpen = detailsPanel.classList.contains('open');
+              if (isOpen) {
+                detailsPanel.classList.remove('open');
+                detailsBtn.classList.remove('open');
+                detailsBtn.setAttribute('aria-expanded', 'false');
+              } else {
+                detailsPanel.classList.add('open');
+                detailsBtn.classList.add('open');
+                detailsBtn.setAttribute('aria-expanded', 'true');
+              }
+            });
+          }
+
+          v1.addEventListener('ended', () => {
+            hasV1Ended = true;
+            if (isSection3Active) {
+              v2.currentTime = 0;
+              v2.play().catch(err => console.log('haldi v2 play error:', err));
+              v2.classList.add('active');
+              v1.classList.remove('active');
+            }
+          });
+
+          window.onSection3Enter = function() {
+            isSection3Active = true;
+
+            // Trigger text overlay reveal ONCE ONLY 1.5 seconds after Section 3 enters view
+            const overlay = document.getElementById('haldi-info-overlay');
+            if (overlay && !hasHaldiTextRevealed) {
+              if (revealTimer) clearTimeout(revealTimer);
+              revealTimer = setTimeout(() => {
+                overlay.classList.add('revealed');
+                hasHaldiTextRevealed = true;
+              }, 1500);
+            }
+
+            // Trigger Haldi Caricature reveal ONCE ONLY after 0.8 seconds
+            const caricature = document.getElementById('haldi-caricature-img');
+            if (caricature && !hasCaricatureRevealed) {
+              if (caricatureTimer) clearTimeout(caricatureTimer);
+              caricatureTimer = setTimeout(() => {
+                caricature.classList.add('revealed-permanently');
+                hasCaricatureRevealed = true;
+              }, 800);
+            }
+
+            if (!hasV1Ended) {
+              v1.classList.add('active');
+              v2.classList.remove('active');
+              v1.play().catch(err => console.log('haldi v1 play error:', err));
+            } else {
+              v2.classList.add('active');
+              v1.classList.remove('active');
+              if (v2.paused) {
+                v2.play().catch(err => console.log('haldi v2 resume error:', err));
+              }
+            }
+          };
+
+          window.onSection3Leave = function() {
+            isSection3Active = false;
+
+            if (!hasHaldiTextRevealed && revealTimer) {
+              clearTimeout(revealTimer);
+              revealTimer = null;
+            }
+
+            if (!hasCaricatureRevealed && caricatureTimer) {
+              clearTimeout(caricatureTimer);
+              caricatureTimer = null;
+            }
+
+            if (!v1.paused) v1.pause();
+            if (!v2.paused) v2.pause();
+          };
+        }
+
+        // Section 4 Video Controller Engine: Tilak & Sangeet (Plays Sangeet Video + Caricature)
+        function initSection4VideoController() {
+          const v = document.getElementById('sangeet-video');
+          if (!v) return;
+
+          let isSection4Active = false;
+          let revealTimer = null;
+          let caricatureTimer = null;
+          let hasCaricatureRevealed = false;
+          let hasSangeetTextRevealed = false;
+
+          // Live Countdown Timer to 11 Dec 2026 06:00 PM IST (Tilak & Sangeet)
+          const targetDate = new Date('2026-12-11T18:00:00+05:30').getTime();
+          function updateSangeetCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            const daysEl = document.getElementById('sangeet-days');
+            const hoursEl = document.getElementById('sangeet-hours');
+            const minsEl = document.getElementById('sangeet-mins');
+            const secsEl = document.getElementById('sangeet-secs');
+            if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+            if (diff <= 0) {
+              daysEl.textContent = '00';
+              hoursEl.textContent = '00';
+              minsEl.textContent = '00';
+              secsEl.textContent = '00';
+              return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.textContent = days < 10 ? '0' + days : days;
+            hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+            minsEl.textContent = mins < 10 ? '0' + mins : mins;
+            secsEl.textContent = secs < 10 ? '0' + secs : secs;
+          }
+          updateSangeetCountdown();
+          setInterval(updateSangeetCountdown, 1000);
+
+          // View Details Collapsible Panel Listener
+          const detailsBtn = document.getElementById('sangeet-details-btn');
+          const detailsPanel = document.getElementById('sangeet-details-panel');
+          if (detailsBtn && detailsPanel) {
+            detailsBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const isOpen = detailsPanel.classList.contains('open');
+              if (isOpen) {
+                detailsPanel.classList.remove('open');
+                detailsBtn.classList.remove('open');
+                detailsBtn.setAttribute('aria-expanded', 'false');
+              } else {
+                detailsPanel.classList.add('open');
+                detailsBtn.classList.add('open');
+                detailsBtn.setAttribute('aria-expanded', 'true');
+              }
+            });
+          }
+
+          window.onSection4Enter = function() {
+            isSection4Active = true;
+
+            // Trigger text overlay reveal ONCE ONLY 1 second after Section 4 enters view
+            const overlay = document.getElementById('sangeet-info-overlay');
+            if (overlay && !hasSangeetTextRevealed) {
+              if (revealTimer) clearTimeout(revealTimer);
+              revealTimer = setTimeout(() => {
+                overlay.classList.add('revealed');
+                hasSangeetTextRevealed = true;
+              }, 1000);
+            }
+
+            // Trigger Sangeet Caricature reveal ONCE ONLY after 0.5 seconds
+            const caricature = document.getElementById('sangeet-caricature-img');
+            if (caricature && !hasCaricatureRevealed) {
+              if (caricatureTimer) clearTimeout(caricatureTimer);
+              caricatureTimer = setTimeout(() => {
+                caricature.classList.add('revealed-permanently');
+                hasCaricatureRevealed = true;
+              }, 500);
+            }
+
+            if (v.paused) {
+              v.play().catch(err => console.log('sangeet play error:', err));
+            }
+          };
+
+          window.onSection4Leave = function() {
+            isSection4Active = false;
+
+            if (!hasSangeetTextRevealed && revealTimer) {
+              clearTimeout(revealTimer);
+              revealTimer = null;
+            }
+
+            if (!hasCaricatureRevealed && caricatureTimer) {
+              clearTimeout(caricatureTimer);
+              caricatureTimer = null;
+            }
+
+            if (!v.paused) v.pause();
+          };
+        }
+
+
+
+        // Section 7 Video Controller Engine: Wedding Ceremony (Plays Wedding 1 first, then seamless loop on Wedding 2 + Caricature)
+        function initSection7VideoController() {
+          const v1 = document.getElementById('wedding-video-1');
+          const v2 = document.getElementById('wedding-video-2');
+          if (!v1 || !v2) return;
+
+          let hasV1Ended = false;
+          let isSection7Active = false;
+          let revealTimer = null;
+          let caricatureTimer = null;
+          let hasCaricatureRevealed = false;
+          let hasWeddingTextRevealed = false;
+
+          v2.load();
+
+          // Live Countdown Timer to 12 Dec 2026 02:00 PM IST (Baraat starts at 2:00 PM)
+          const targetDate = new Date('2026-12-12T14:00:00+05:30').getTime();
+          function updateWeddingCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            const daysEl = document.getElementById('wedding-days');
+            const hoursEl = document.getElementById('wedding-hours');
+            const minsEl = document.getElementById('wedding-mins');
+            const secsEl = document.getElementById('wedding-secs');
+            if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+            if (diff <= 0) {
+              daysEl.textContent = '00';
+              hoursEl.textContent = '00';
+              minsEl.textContent = '00';
+              secsEl.textContent = '00';
+              return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.textContent = days < 10 ? '0' + days : days;
+            hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+            minsEl.textContent = mins < 10 ? '0' + mins : mins;
+            secsEl.textContent = secs < 10 ? '0' + secs : secs;
+          }
+          updateWeddingCountdown();
+          setInterval(updateWeddingCountdown, 1000);
+
+          // View Details Collapsible Panel Listener
+          const detailsBtn = document.getElementById('wedding-details-btn');
+          const detailsPanel = document.getElementById('wedding-details-panel');
+          if (detailsBtn && detailsPanel) {
+            detailsBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const isOpen = detailsPanel.classList.contains('open');
+              if (isOpen) {
+                detailsPanel.classList.remove('open');
+                detailsBtn.classList.remove('open');
+                detailsBtn.setAttribute('aria-expanded', 'false');
+              } else {
+                detailsPanel.classList.add('open');
+                detailsBtn.classList.add('open');
+                detailsBtn.setAttribute('aria-expanded', 'true');
+              }
+            });
+          }
+
+          v1.addEventListener('ended', () => {
+            hasV1Ended = true;
+            if (isSection7Active) {
+              v2.currentTime = 0;
+              v2.play().catch(err => console.log('wedding v2 play error:', err));
+              v2.classList.add('active');
+              v1.classList.remove('active');
+            }
+          });
+
+          window.onSection7Enter = function() {
+            isSection7Active = true;
+
+            // Trigger text overlay reveal ONCE ONLY 1 second after Section 7 enters view
+            const overlay = document.getElementById('wedding-info-overlay');
+            if (overlay && !hasWeddingTextRevealed) {
+              if (revealTimer) clearTimeout(revealTimer);
+              revealTimer = setTimeout(() => {
+                overlay.classList.add('revealed');
+                hasWeddingTextRevealed = true;
+              }, 1000);
+            }
+
+            // Trigger Wedding Caricature reveal ONCE ONLY after 0.5 seconds
+            const caricature = document.getElementById('wedding-caricature-img');
+            if (caricature && !hasCaricatureRevealed) {
+              if (caricatureTimer) clearTimeout(caricatureTimer);
+              caricatureTimer = setTimeout(() => {
+                caricature.classList.add('revealed-permanently');
+                hasCaricatureRevealed = true;
+              }, 500);
+            }
+
+            if (!hasV1Ended) {
+              v1.classList.add('active');
+              v2.classList.remove('active');
+              v1.play().catch(err => console.log('wedding v1 play error:', err));
+            } else {
+              v2.classList.add('active');
+              v1.classList.remove('active');
+              if (v2.paused) {
+                v2.play().catch(err => console.log('wedding v2 resume error:', err));
+              }
+            }
+          };
+
+          window.onSection7Leave = function() {
+            isSection7Active = false;
+
+            if (!hasWeddingTextRevealed && revealTimer) {
+              clearTimeout(revealTimer);
+              revealTimer = null;
+            }
+
+            if (!hasCaricatureRevealed && caricatureTimer) {
+              clearTimeout(caricatureTimer);
+              caricatureTimer = null;
+            }
+
+            if (!v1.paused) v1.pause();
+            if (!v2.paused) v2.pause();
+          };
+        }
+
+        // Section Reception Video Controller Engine (Autoplay + Seamless Loop + Caricature & Details)
+        function initReceptionVideoController() {
+          const v = document.getElementById('reception-video');
+          if (!v) return;
+
+          let isReceptionActive = false;
+          let revealTimer = null;
+          let caricatureTimer = null;
+          let hasCaricatureRevealed = false;
+          let hasReceptionTextRevealed = false;
+
+          // Live Countdown Timer to 12 Dec 2026 07:30 PM IST (Reception)
+          const targetDate = new Date('2026-12-12T19:30:00+05:30').getTime();
+          function updateReceptionCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            const daysEl = document.getElementById('reception-days');
+            const hoursEl = document.getElementById('reception-hours');
+            const minsEl = document.getElementById('reception-mins');
+            const secsEl = document.getElementById('reception-secs');
+            if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+            if (diff <= 0) {
+              daysEl.textContent = '00';
+              hoursEl.textContent = '00';
+              minsEl.textContent = '00';
+              secsEl.textContent = '00';
+              return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.textContent = days < 10 ? '0' + days : days;
+            hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+            minsEl.textContent = mins < 10 ? '0' + mins : mins;
+            secsEl.textContent = secs < 10 ? '0' + secs : secs;
+          }
+          updateReceptionCountdown();
+          setInterval(updateReceptionCountdown, 1000);
+
+          // View Details Collapsible Panel Listener
+          const detailsBtn = document.getElementById('reception-details-btn');
+          const detailsPanel = document.getElementById('reception-details-panel');
+          if (detailsBtn && detailsPanel) {
+            detailsBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const isOpen = detailsPanel.classList.contains('open');
+              if (isOpen) {
+                detailsPanel.classList.remove('open');
+                detailsBtn.classList.remove('open');
+                detailsBtn.setAttribute('aria-expanded', 'false');
+              } else {
+                detailsPanel.classList.add('open');
+                detailsBtn.classList.add('open');
+                detailsBtn.setAttribute('aria-expanded', 'true');
+              }
+            });
+          }
+
+          window.onReceptionEnter = function() {
+            isReceptionActive = true;
+
+            // Trigger text overlay reveal ONCE ONLY 1 second after section enters view
+            const overlay = document.getElementById('reception-info-overlay');
+            if (overlay && !hasReceptionTextRevealed) {
+              if (revealTimer) clearTimeout(revealTimer);
+              revealTimer = setTimeout(() => {
+                overlay.classList.add('revealed');
+                hasReceptionTextRevealed = true;
+              }, 1000);
+            }
+
+            // Trigger Reception Caricature reveal ONCE ONLY after 0.5 seconds
+            const caricature = document.getElementById('reception-caricature-img');
+            if (caricature && !hasCaricatureRevealed) {
+              if (caricatureTimer) clearTimeout(caricatureTimer);
+              caricatureTimer = setTimeout(() => {
+                caricature.classList.add('revealed-permanently');
+                hasCaricatureRevealed = true;
+              }, 500);
+            }
+
+            if (v.paused) {
+              v.play().catch(err => console.log('reception play error:', err));
+            }
+          };
+
+          window.onReceptionLeave = function() {
+            isReceptionActive = false;
+
+            if (!hasReceptionTextRevealed && revealTimer) {
+              clearTimeout(revealTimer);
+              revealTimer = null;
+            }
+
+            if (!hasCaricatureRevealed && caricatureTimer) {
+              clearTimeout(caricatureTimer);
+              caricatureTimer = null;
+            }
+
+            if (!v.paused) v.pause();
+          };
+        }
+
+        // Section 9 Video Controller Engine (Single Video Autoplay + Continuous Seamless Loop + Interactive RSVP)
+        function initSection9VideoController() {
+          const v = document.getElementById('lastpage-video');
+          const form = document.getElementById('rsvp-form');
+          const submitBtn = document.getElementById('rsvp-submit-btn');
+          const successMsg = document.getElementById('rsvp-success-msg');
+          let revealTimer = null;
+          let hasRSVPTextRevealed = false;
+
+          if (form) {
+            form.addEventListener('submit', (e) => {
+              e.stopPropagation();
+              e.preventDefault();
+
+              const nameInput = document.getElementById('rsvp-name');
+              const guestsInput = document.getElementById('rsvp-guests');
+              const attendanceInput = document.getElementById('rsvp-attendance');
+
+              if (!nameInput || !nameInput.value.trim()) return;
+
+              const nameVal = nameInput.value.trim();
+              const guestsVal = guestsInput ? guestsInput.value : '2 Guests';
+              const attendanceVal = attendanceInput ? attendanceInput.value : 'Joyfully Accepts';
+
+              if (submitBtn) {
+                submitBtn.disabled = true;
+                const span = submitBtn.querySelector('span');
+                if (span) span.textContent = 'Sending...';
+              }
+
+              // Check if running on file:// protocol (FormSubmit AJAX requires http/https web server)
+              const isFileProtocol = window.location.protocol === 'file:';
+
+              if (isFileProtocol) {
+                if (submitBtn) submitBtn.style.display = 'none';
+                if (successMsg) successMsg.classList.add('show');
+                form.submit();
+                return;
+              }
+
+              // Send email to dipanshuvaibhav82@gmail.com
+              fetch('https://formsubmit.co/ajax/dipanshuvaibhav82@gmail.com', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                  'name': nameVal,
+                  'Guest Name': nameVal,
+                  'Number of Guests': guestsVal,
+                  'Attendance Status': attendanceVal,
+                  '_subject': `New Wedding RSVP: ${nameVal} (${attendanceVal}) - Ayushi & Sudama Wedding`,
+                  '_template': 'table',
+                  '_captcha': 'false'
+                })
+              }).then(res => res.json())
+                .then(data => {
+                  if (data.success === 'true' || data.success === true) {
+                    console.log('RSVP email sent successfully:', data);
+                  } else {
+                    console.warn('FormSubmit notice:', data.message);
+                  }
+                })
+                .catch(err => {
+                  console.error('Error sending RSVP email:', err);
+                })
+                .finally(() => {
+                  if (submitBtn) submitBtn.style.display = 'none';
+                  if (successMsg) successMsg.classList.add('show');
+                });
+            });
+          }
+
+          if (!v) return;
+
+          window.onSection9Enter = function() {
+            // Trigger text animation ONCE ONLY 0.5 seconds after Section 9 enters view
+            const overlay = document.getElementById('rsvp-info-overlay');
+            if (overlay && !hasRSVPTextRevealed) {
+              if (revealTimer) clearTimeout(revealTimer);
+              revealTimer = setTimeout(() => {
+                overlay.classList.add('revealed');
+                hasRSVPTextRevealed = true;
+              }, 500);
+            }
+
+            if (v.paused) {
+              v.play().catch(err => console.log('lastpage play error:', err));
+            }
+          };
+
+          window.onSection9Leave = function() {
+            if (!hasRSVPTextRevealed && revealTimer) {
+              clearTimeout(revealTimer);
+              revealTimer = null;
+            }
+            if (!v.paused) v.pause();
+          };
+        }
+
+        initSection3VideoController();
+        initSection4VideoController();
+        initSection7VideoController();
+        initReceptionVideoController();
+        initSection9VideoController();
+
+        sections.forEach((sec) => observer.observe(sec));
+      }
+
+      // Pink Rose Petals Falling Animation Engine (Section 2 Only)
+      function initSection2PinkPetals() {
+        const petalsCanvas = document.getElementById('pink-petals-canvas');
+        const venueWrapper = document.getElementById('venue-card-wrapper');
+        if (!petalsCanvas || !venueWrapper) return;
+
+        const ctx = petalsCanvas.getContext('2d');
+        let width = 0;
+        let height = 0;
+        let animationFrameId = null;
+        let isRunning = false;
+
+        function resizePetalsCanvas() {
+          const rect = venueWrapper.getBoundingClientRect();
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = rect.width || 360;
+          height = rect.height || 720;
+          petalsCanvas.width = Math.round(width * dpr);
+          petalsCanvas.height = Math.round(height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        resizePetalsCanvas();
+        window.addEventListener('resize', resizePetalsCanvas);
+
+        const PETAL_COUNT = 32;
+        const petals = [];
+        const pinkColors = [
+          '#e884a1', '#d64974', '#f7c5d3', '#c93662', '#f5e6d3', '#e29db1'
+        ];
+
+        function createPetal(isInitial) {
+          return {
+            x: Math.random() * width,
+            y: isInitial ? Math.random() * height : -20 - Math.random() * 40,
+            size: 8 + Math.random() * 10,
+            speedY: 0.8 + Math.random() * 1.4,
+            speedX: (Math.random() - 0.5) * 0.6,
+            swayFreq: 0.015 + Math.random() * 0.02,
+            swayAmp: 0.8 + Math.random() * 1.2,
+            angle: Math.random() * Math.PI * 2,
+            vRot: (Math.random() - 0.5) * 0.04,
+            opacity: 0.65 + Math.random() * 0.35,
+            color: pinkColors[Math.floor(Math.random() * pinkColors.length)],
+            flip: Math.random() * Math.PI
+          };
+        }
+
+        for (let i = 0; i < PETAL_COUNT; i++) {
+          petals.push(createPetal(true));
+        }
+
+        function drawRosePetal(p) {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.angle);
+          ctx.scale(Math.cos(p.flip), 1);
+          ctx.globalAlpha = p.opacity;
+
+          // Organic Pink Rose Petal Path
+          ctx.beginPath();
+          ctx.moveTo(0, -p.size);
+          ctx.bezierCurveTo(p.size * 0.8, -p.size * 0.7, p.size * 0.9, p.size * 0.5, 0, p.size);
+          ctx.bezierCurveTo(-p.size * 0.9, p.size * 0.5, -p.size * 0.8, -p.size * 0.7, 0, -p.size);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+
+          // Subtle petal vein highlight
+          ctx.beginPath();
+          ctx.moveTo(0, -p.size * 0.8);
+          ctx.lineTo(0, p.size * 0.8);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+
+          ctx.restore();
+        }
+
+        let step = 0;
+
+        function animatePetals() {
+          if (!isRunning) return;
+          ctx.clearRect(0, 0, width, height);
+          step += 1;
+
+          petals.forEach((p) => {
+            p.y += p.speedY;
+            p.x += Math.sin(step * p.swayFreq) * p.swayAmp + p.speedX;
+            p.angle += p.vRot;
+            p.flip += 0.02;
+
+            if (p.y > height + 25) {
+              Object.assign(p, createPetal(false));
+            }
+
+            drawRosePetal(p);
+          });
+
+          animationFrameId = requestAnimationFrame(animatePetals);
+        }
+
+        window.startSection2Petals = function () {
+          if (!isRunning) {
+            isRunning = true;
+            animatePetals();
+          }
+        };
+
+        window.stopSection2Petals = function () {
+          isRunning = false;
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+          ctx.clearRect(0, 0, width, height);
+        };
+
+        // Auto-start if section 2 is visible on load
+        const section2 = document.getElementById('section-2');
+        if (section2) {
+          const rect = section2.getBoundingClientRect();
+          if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+            const venueWrapper = document.getElementById('venue-card-wrapper');
+            if (venueWrapper) venueWrapper.classList.add('animated-in');
+            window.startSection2Petals();
+          }
+        }
+      }
+
+      initSection2PinkPetals();
+
+      dotButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetId = btn.getAttribute('data-section');
+          const targetSec = document.getElementById(targetId);
+          if (targetSec) {
+            targetSec.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      if (scrollHint && section2) {
+        scrollHint.addEventListener('click', (e) => {
+          e.stopPropagation();
+          section2.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      document.body.addEventListener('click', handleUserInteraction);
+      document.body.addEventListener('touchstart', handleUserInteraction, { passive: true });
+      document.body.addEventListener('keydown', (e) => {
+        const isInputField = e.target && (
+          ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(e.target.tagName) ||
+          e.target.isContentEditable
+        );
+        if (!isInputField && (e.code === 'Space' || e.code === 'Enter')) {
+          e.preventDefault();
+          handleUserInteraction();
+        } else {
+          handleUserInteraction();
+        }
+      });
+
+      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('orientationchange', () => {
+        setTimeout(resizeCanvas, 150);
+      });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', resizeCanvas);
+      }
+
+      function completeLoader() {
+        if (loaderBar) loaderBar.style.width = '100%';
+        if (loaderWrap) {
+          setTimeout(() => {
+            loaderWrap.classList.add('completed');
+          }, 300);
+        }
+      }
+
+      if (document.readyState === 'complete') {
+        completeLoader();
+      } else {
+        window.addEventListener('load', completeLoader);
+        setTimeout(completeLoader, 500);
+      }
+
+      resizeCanvas();
+    })();
+  </script>
+</body>
+
+</html>
