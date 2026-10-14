@@ -8,6 +8,14 @@
   <title>Ayushi & Sudama | Wedding Invitation</title>
   <style>
     @font-face {
+      font-family: 'Niquitta Mirzani Script';
+      src: url('Niquitta Mirzani Script.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
       font-family: 'ROSEMARRYE SCRIPT PERSONAL USE';
       src: url('RosemarryeScript.ttf') format('truetype');
       font-weight: normal;
@@ -996,16 +1004,16 @@
       transform: translateY(0);
     }
 
-    /* "Haldi" Heading: Decreased size by 10% (14.625cqi) & shifted 2% left */
+    /* "Haldi" Heading in Niquitta Mirzani Script (Reduced by 10%) */
     .haldi-heading {
-      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
-      font-size: 14.625cqi;
+      font-family: 'Niquitta Mirzani Script', 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', cursive;
+      font-size: 12.6cqi;
       color: #d76700;
       font-weight: normal;
       line-height: 0.95;
       margin: 0 0 1% 0;
       position: relative;
-      left: -2%;
+      left: 0;
       text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 2px 10px rgba(0, 0, 0, 0.12);
       pointer-events: auto;
     }
@@ -1236,6 +1244,18 @@
       background: linear-gradient(135deg, #ff7a00, #e65100);
     }
 
+    .swatch-pink {
+      background: linear-gradient(135deg, #f48fb1, #f06292);
+    }
+
+    .swatch-blue {
+      background: linear-gradient(135deg, #81d4fa, #4fc3f7);
+    }
+
+    .swatch-green {
+      background: linear-gradient(135deg, #a5d6a7, #81c784);
+    }
+
     .open-lunch-banner {
       margin-top: 1.2%;
       color: #d76700;
@@ -1360,15 +1380,15 @@
     }
 
     .sangeet-heading {
-      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
-      font-size: 13.8125cqi;
+      font-family: 'Niquitta Mirzani Script', 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', cursive;
+      font-size: 9.2cqi;
       color: #FFE47C;
       font-weight: normal;
-      line-height: 0.95;
+      line-height: 1.05;
       white-space: nowrap;
       margin: 0 0 3% 0;
       position: relative;
-      left: -2%;
+      left: 0;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
       pointer-events: auto;
     }
@@ -1558,14 +1578,14 @@
       text-align: center;
     }
 
-    /* Section 8: Wedding Caricature Asset (0% Bottom Padding, Left-to-Center Fade Entrance, Revealed Once Only) */
+    /* Section 8: Wedding Caricature Asset (Reduced size, positioned below View Details) */
     .wedding-caricature-img {
       position: absolute;
-      bottom: 0%;
+      bottom: 1%;
       left: 50%;
-      transform: translate(calc(-50% - 50px), 0);
-      width: 66cqi;
-      max-width: 95%;
+      transform: translate(calc(-50% - 30px), 0);
+      width: 42cqi;
+      max-width: 85%;
       height: auto;
       z-index: 8;
       pointer-events: none;
@@ -1610,11 +1630,11 @@
     }
 
     .wedding-heading {
-      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
-      font-size: 10.56cqi;
+      font-family: 'Niquitta Mirzani Script', 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', cursive;
+      font-size: 7.8cqi;
       color: #DBD885;
       font-weight: normal;
-      line-height: 0.95;
+      line-height: 1.1;
       white-space: nowrap;
       margin: 0 0 2.5% 0;
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -2027,10 +2047,10 @@
       pointer-events: none;
     }
 
-    /* Section 9: RSVP & Warm Regards Overlay (No Form Background - Top 25% Margin) */
+    /* Section 9: RSVP & Warm Regards Overlay (Positioned below the hanging lamps) */
     .rsvp-info-overlay {
       position: absolute;
-      top: 25%;
+      top: 26.5%;
       left: 50%;
       transform: translateX(-50%);
       width: 88%;
@@ -2043,7 +2063,7 @@
       text-align: center;
     }
 
-    /* Initial Staggered Items for Section 9 (Same as Section 1 Reveal Animations) */
+    /* Initial Staggered Items for Section 9 */
     .rsvp-info-overlay .reveal-item {
       opacity: 0;
       transform: translateY(16px);
@@ -2082,14 +2102,14 @@
       transform: translateY(0);
     }
 
-    /* RSVP Heading (Georgia Semibold, #B81616 - 50% Reduced to 4.25cqi) */
+    /* RSVP Heading (Georgia Semibold, #B81616) */
     .rsvp-heading {
       font-family: 'Georgia', Georgia, serif;
       font-weight: 600;
-      font-size: 4.25cqi;
+      font-size: 3.6cqi;
       color: #B81616;
       line-height: 1.0;
-      margin: 0 0 2.5% 0;
+      margin: 0 0 1.8% 0;
       text-shadow: none;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -2099,7 +2119,7 @@
     .rsvp-form {
       width: 100%;
       max-width: 85%;
-      margin: 0 auto 10% auto;
+      margin: 0 auto 2.8% auto;
       background: transparent !important;
       border: none !important;
       box-shadow: none !important;
@@ -2107,7 +2127,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2.2cqi;
+      gap: 1.6cqi;
     }
 
     .rsvp-field-row {
@@ -2117,7 +2137,7 @@
     .rsvp-field-grid {
       width: 100%;
       display: flex;
-      gap: 2cqi;
+      gap: 1.6cqi;
       justify-content: center;
     }
 
@@ -2127,9 +2147,9 @@
       background: rgba(255, 255, 255, 0.55);
       border: 1.5px solid rgba(141, 92, 20, 0.45);
       border-radius: 8px;
-      padding: 2.2% 4%;
+      padding: 1.6% 3.2%;
       font-family: 'Georgia', Georgia, serif;
-      font-size: 2.5cqi;
+      font-size: 2.2cqi;
       color: #8D5C14;
       outline: none;
       transition: all 0.3s ease;
@@ -2160,16 +2180,16 @@
       color: #ffffff;
       font-family: 'Georgia', Georgia, serif;
       font-weight: bold;
-      font-size: 2.4cqi;
+      font-size: 2.1cqi;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 2% 7%;
+      padding: 1.6% 6.2%;
       border-radius: 20px;
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(184, 22, 22, 0.3);
       transition: all 0.3s ease;
-      margin-top: 1%;
+      margin-top: 0.3%;
     }
 
     .rsvp-submit-btn:hover {
@@ -2185,11 +2205,11 @@
     .rsvp-success-msg {
       display: none;
       font-family: 'Georgia', Georgia, serif;
-      font-size: 2.5cqi;
+      font-size: 2.2cqi;
       font-weight: bold;
       color: #B81616;
-      margin-top: 2%;
-      padding: 2% 4%;
+      margin-top: 1.2%;
+      padding: 1.2% 3.2%;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.75);
     }
@@ -2199,61 +2219,86 @@
       animation: fadeIn 0.5s ease forwards;
     }
 
+    .closing-presence-msg {
+      font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+      font-size: 2.5cqi;
+      font-style: italic;
+      font-weight: 600;
+      color: #8D5C14;
+      line-height: 1.35;
+      text-align: center;
+      max-width: 90%;
+      margin: 0 auto 2.2% auto;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
     /* Warm Regards Block */
     .rsvp-regards-block {
-      margin-bottom: 3.5%;
+      margin-bottom: 2.0%;
+      text-align: center;
     }
 
     .rsvp-regards-title {
-      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
-      font-size: 3.2cqi;
-      font-weight: 700;
-      color: #8D5C14;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 1%;
-      padding-bottom: 1%;
-      text-shadow: none;
+      font-family: 'Niquitta Mirzani Script', cursive;
+      font-size: 5.6cqi;
+      font-weight: normal;
+      color: #B81616;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.0%;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
     }
 
-    .rsvp-family-name {
-      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
-      font-size: 9.5cqi;
-      color: #B81616;
-      font-weight: normal;
-      line-height: 1.0;
-      text-shadow: none;
-      white-space: pre-wrap;
+    .family-members-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6cqi;
+      font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+      font-size: 2.5cqi;
+      font-weight: 600;
+      color: #3b1d00;
+      letter-spacing: 0.02em;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
     }
 
     /* Contacts Block */
     .rsvp-contacts-block {
       display: flex;
       flex-direction: column;
-      gap: 0.8cqi;
-      margin-top: 1%;
-      margin-bottom: 2.5%;
+      align-items: center;
+      gap: 0.5cqi;
+      margin-top: 1.2%;
+      text-align: center;
     }
 
-    .rsvp-contact-item {
-      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
-      font-size: 2.6cqi;
+    .contact-header-lbl {
+      font-family: 'Georgia', Georgia, serif;
+      font-weight: bold;
+      font-size: 2.1cqi;
+      color: #8D5C14;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .rsvp-contact-numbers {
+      font-family: 'Palatino', 'Palatino Linotype', Georgia, serif;
+      font-size: 2.5cqi;
       font-weight: 600;
       color: #8D5C14;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.0cqi;
-      white-space: nowrap;
+      gap: 0.8cqi;
+      flex-wrap: wrap;
     }
 
-    .rsvp-contact-item .contact-phone {
+    .rsvp-contact-numbers .contact-phone {
       color: #8D5C14;
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
-    .rsvp-contact-item .contact-phone:hover {
+    .rsvp-contact-numbers .contact-phone:hover {
       color: #B81616;
       text-decoration: underline;
     }
@@ -2301,35 +2346,17 @@
       margin-bottom: 0.5%; /* 2x reduced spacing between PNG and hashtag text */
     }
 
-    /* Subtle Preview Grid & Watermark Overlay across entire website */
-    .preview-watermark-grid {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      width: 100dvw;
-      height: 100vh;
-      height: 100dvh;
-      pointer-events: none;
-      z-index: 9999;
-      background-image: 
-        linear-gradient(rgba(141, 92, 20, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(141, 92, 20, 0.07) 1px, transparent 1px),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='180'><text x='50%' y='50%' text-anchor='middle' transform='rotate(-25 140 90)' fill='rgba(141,92,20,0.12)' font-family='sans-serif' font-weight='800' font-size='16' letter-spacing='3'>ONLY FOR PREVIEW</text></svg>");
-      background-size: 40px 40px, 40px 40px, 280px 180px;
-    }
-
-    /* Hashtag text size unchanged (3.8cqi) */
+    /* Hashtag text in Palatino font (same as date) */
     .hashtag-text {
-      font-family: 'Georgia', Georgia, serif;
-      font-style: italic;
-      font-weight: normal;
-      font-size: 3.8cqi;
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 4.5cqi;
       color: #8D5C14;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.12em;
       text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
       white-space: nowrap;
-      margin-top: -1cqi;
+      margin-top: 0;
     }
 
     .venue-info-overlay {
@@ -2392,33 +2419,34 @@
     }
 
     .venue-heading {
-      font-family: 'Georgia', Georgia, serif;
-      font-weight: bold;
-      font-size: 3.2cqi;
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 600;
+      font-size: 3.4cqi;
       color: #8D5C14;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin: 0 0 2% 0;
+      margin: 0 0 1.5% 0;
       opacity: 0.9;
     }
 
     .venue-name {
-      font-family: 'Georgia', Georgia, serif;
-      font-weight: 600;
-      font-size: 6.0cqi;
+      font-family: 'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      font-weight: 700;
+      font-size: 4.8cqi;
       color: #B81616;
-      margin: 0 0 1% 0;
+      margin: 0 0 2.5% 0;
       line-height: 1.25;
+      letter-spacing: 0.03em;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     }
 
     .venue-location {
       font-family: 'Georgia', Georgia, serif;
       font-weight: normal;
-      font-size: 4.4cqi;
+      font-size: 3.2cqi;
       color: #8D5C14;
       margin: 0 0 5% 0;
-      line-height: 1.3;
+      line-height: 1.4;
     }
 
     .venue-directions-btn {
@@ -2694,7 +2722,7 @@
     }
 
     .heading-script {
-      font-family: 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', 'Dancing Script', cursive;
+      font-family: 'Niquitta Mirzani Script', 'ROSEMARRYE SCRIPT PERSONAL USE', 'Great Vibes', cursive;
       color: #B81616;
       font-weight: normal;
       line-height: 1.15;
@@ -2708,9 +2736,9 @@
     }
 
     .heading-script.weds-text {
-      font-size: 12.0cqi;
-      margin-top: 1.5%;
-      margin-bottom: 1.5%;
+      font-size: 6.0cqi;
+      margin-top: 0.8%;
+      margin-bottom: 0.8%;
     }
 
     /* Luxury Interactive Scratch Card Reveal Component */
@@ -2897,11 +2925,8 @@
 </head>
 
 <body>
-  <!-- Subtle Preview Grid & Watermark Overlay -->
-  <div class="preview-watermark-grid" aria-hidden="true"></div>
-
-  <!-- Invisible Looping Background Music (Vaaroon - vaaroon.mp3) -->
-  <audio id="bg-audio" src="vaaroon.mp3" preload="auto" loop style="display: none;"></audio>
+  <!-- Invisible Looping Background Music (RHTDM Rain Theme - rhtdm.mp3) -->
+  <audio id="bg-audio" src="rhtdm.mp3" preload="auto" loop style="display: none;"></audio>
 
   <div class="loader-bar-wrap" id="loader-wrap">
     <div class="loader-bar" id="loader-bar"></div>
@@ -2924,24 +2949,24 @@
                 <img src="ganesha.png" class="ganesha-img" alt="Lord Ganesha">
               </div>
 
-              <div class="reveal-item fade-in mantra-text">॥ श्री गणेशाय नमः ॥</div>
+              <div class="reveal-item fade-in mantra-text">॥ श्री गणेशायनमः ॥</div>
               <div class="reveal-item fade-in mantra-text" style="font-size: 3.1cqi; line-height: 1.35; margin-bottom: 2%;">
-                With the heavenly blessings of our beloved Grandparents<br>
-                <span style="font-size: 2.85cqi; font-style: italic;">Late Smt. Uma & Late Sri Mahesh Lal Srivastava</span>
+                With the heavenly blessings of our beloved grandparents<br>
+                <span style="font-size: 2.85cqi; font-style: italic;">Late Smt. Uma & Shri Mahesh Lal Srivastava</span>
               </div>
 
               <div class="reveal-item fade-in details-text" style="margin-top: 2.5%;">
-                Mrs. Avantika & Mr. Awnish Kumar Srivastava<br>
+                Smt. Avantika & Shri Avnish Kumar Srivastava<br>
                 cordially invite you to celebrate the wedding of
               </div>
 
               <div class="reveal-item fade-in heading-script name-text" style="margin-top: 1.5%;">Ayushi</div>
-              <div class="reveal-item fade-in heading-script weds-text">weds</div>
+              <div class="reveal-item fade-in heading-script weds-text">Weds</div>
               <div class="reveal-item fade-in heading-script name-text" style="margin-bottom: 2.5%;">Sudama</div>
 
               <div class="reveal-item fade-in details-text">
-                Grandson of Late Smt. Urmila & Late Sri Vishnu Prakash Srivastava<br>
-                Son of Late Smt. Sonali & Mr. Pankaj Srivastava
+                Grandson of Late Smt. Urmila & Late Shri Vishnu Prakash Srivastava<br>
+                Son of Late Smt. Sonali & Shri Pankaj Srivastava
               </div>
 
               <!-- Luxury Scratch-to-Reveal Wedding Date Card -->
@@ -2987,15 +3012,15 @@
           <!-- Section 2 Header Monogram & Hashtag -->
           <div class="venue-header-container">
             <img src="as_monogram.png" class="pn-monogram-img" alt="Ayushi & Sudama Monogram">
-            <div class="hashtag-text">#AyushiSudama</div>
+            <div class="hashtag-text">#Sushi</div>
           </div>
 
           <!-- Refined Minimal Venue Card + Get Direction Overlay -->
           <div class="venue-info-overlay" id="venue-info-overlay">
             <div class="venue-info-card">
               <h3 class="venue-heading">Venue</h3>
-              <h2 class="venue-name">Maeva Resorts</h2>
-              <p class="venue-location">Kursi Road, Lucknow</p>
+              <h2 class="venue-name">Maeva Resorts and Hotels</h2>
+              <p class="venue-location">527, Woodland Street, Kursi Road, near Scorpio club,<br>Lucknow, Uttar Pradesh - 226026</p>
               <a href="https://www.google.com/maps/search/?api=1&query=Maeva+Hotels+and+Resorts+Kursi+Road+Lucknow" 
                  target="_blank" 
                  rel="noopener noreferrer" 
@@ -3025,7 +3050,7 @@
 
           <!-- Haldi Open Event Info Overlay -->
           <div class="haldi-info-overlay" id="haldi-info-overlay">
-            <h2 class="haldi-heading initial-stagger">Haldi Ceremony</h2>
+            <h2 class="haldi-heading initial-stagger">Haldi</h2>
             <div class="haldi-date initial-stagger">11 December 2026</div>
 
             <!-- Tight Live Countdown Timer -->
@@ -3069,26 +3094,26 @@
 
                 <div class="open-detail-group stagger-item">
                   <div class="open-detail-lbl">VENUE</div>
-                  <div class="open-detail-val">Maeva Resorts Lawn</div>
+                  <div class="open-detail-val">Maeva Lawns</div>
                 </div>
 
                 <div class="open-detail-group stagger-item">
-                  <div class="open-detail-lbl">DRESS CODE</div>
-                  <div class="open-detail-val">Men — Festive Yellow Attire</div>
-                  <div class="open-detail-val">Women — Festive Yellow Attire</div>
+                  <div class="open-detail-lbl">THEME</div>
+                  <div class="open-detail-val">Pastel Floral</div>
                 </div>
 
                 <div class="open-detail-group stagger-item">
                   <div class="open-detail-lbl">COLOR PALETTE</div>
                   <div class="open-palette-row">
-                    <span class="open-palette-txt">Yellow + Orange</span>
-                    <span class="swatch swatch-yellow" title="Yellow"></span>
-                    <span class="swatch swatch-orange" title="Orange"></span>
+                    <span class="open-palette-txt">Pink + Blue + Green</span>
+                    <span class="swatch swatch-pink" title="Pink"></span>
+                    <span class="swatch swatch-blue" title="Blue"></span>
+                    <span class="swatch swatch-green" title="Green"></span>
                   </div>
                 </div>
 
                 <div class="open-lunch-banner stagger-item">
-                  <span>Festive Lunch to Follow</span>
+                  <span>Lunch to follow</span>
                 </div>
               </div>
             </div>
@@ -3110,7 +3135,7 @@
 
           <!-- Sangeet Open Event Info Overlay -->
           <div class="sangeet-info-overlay" id="sangeet-info-overlay">
-            <h2 class="sangeet-heading initial-stagger">Tilak&nbsp;&nbsp;&amp;&nbsp;Sangeet</h2>
+            <h2 class="sangeet-heading initial-stagger">Shubh Tilak and Sangeet</h2>
             <div class="sangeet-date initial-stagger">11 December 2026</div>
 
             <!-- Tight Live Countdown Timer -->
@@ -3154,18 +3179,17 @@
 
                 <div class="open-detail-group stagger-item">
                   <div class="open-detail-lbl">VENUE</div>
-                  <div class="open-detail-val">Maeva Resorts 1st floor Hall</div>
+                  <div class="open-detail-val">Maeva 1st floor hall</div>
                 </div>
 
                 <div class="open-detail-group stagger-item">
                   <div class="open-detail-lbl">SCHEDULE & HIGHLIGHTS</div>
-                  <div class="open-detail-val">Tilak Ceremony at 6:00 PM followed by Sangeet, Dance & Dinner</div>
+                  <div class="open-detail-val">Tilak Ceremony at 6:00 PM followed by sangeet,<br>Dance & Dinner</div>
                 </div>
 
                 <div class="open-detail-group stagger-item">
-                  <div class="open-detail-lbl">DRESS CODE</div>
-                  <div class="open-detail-val">Men — Tailored Suits / Kurta</div>
-                  <div class="open-detail-val">Women — Shimmer & Shine — Lehengas, Sarees & Gowns</div>
+                  <div class="open-detail-lbl">THEME</div>
+                  <div class="open-detail-val">Sequins & Sparkles</div>
                 </div>
               </div>
             </div>
@@ -3176,7 +3200,6 @@
       </div>
     </section>
 
-
     <!-- SECTION 7: Wedding Video Section -->
     <section class="card-section" id="section-7">
       <div class="wedding-stage" id="wedding-stage">
@@ -3184,12 +3207,12 @@
           <video id="wedding-video-1" class="wedding-video active" src="Slides/Wedding 1.mp4" playsinline muted preload="auto"></video>
           <video id="wedding-video-2" class="wedding-video" src="Slides/Wedding 2.mp4" playsinline muted loop preload="auto"></video>
 
-          <!-- Wedding Caricature PNG (Ayushi & Sudama in Royal Wedding attire) -->
+          <!-- Wedding Caricature PNG (Ayushi & Sudama in Royal Wedding attire - Reduced Size, Positioned below View Details) -->
           <img id="wedding-caricature-img" class="wedding-caricature-img" src="Illustrated Indian Wedding Couple Portrait.png" alt="Wedding Caricature" />
 
           <!-- Wedding Open Event Info Overlay -->
           <div class="wedding-info-overlay" id="wedding-info-overlay">
-            <h2 class="wedding-heading initial-stagger">Baraat&nbsp;&nbsp;&amp;&nbsp;Varmala</h2>
+            <h2 class="wedding-heading initial-stagger">Baarat, Varmala & Reception</h2>
             <div class="wedding-date initial-stagger">12 December 2026</div>
 
             <!-- Tight Live Countdown Timer -->
@@ -3228,87 +3251,20 @@
               <div class="subtle-details-box">
                 <div class="open-detail-group stagger-item">
                   <div class="open-detail-lbl">VENUE</div>
-                  <div class="open-detail-val">Maeva Resorts Lawn</div>
+                  <div class="open-detail-val">Maeva Lawn</div>
                 </div>
 
                 <div class="open-detail-group stagger-item">
                   <div class="open-detail-lbl">SCHEDULE & HIGHLIGHTS</div>
-                  <div class="open-detail-val">• Baraat - 2:00 pm</div>
-                  <div class="open-detail-val">• Varmaala - 5:30 pm</div>
-                  <div class="open-detail-val">• Phere Timing - 9:30 pm onwards</div>
+                  <div class="open-detail-val">• Baarat - 2:00 pm</div>
+                  <div class="open-detail-val">• Varmala - 5:30 pm</div>
+                  <div class="open-detail-val">• Varmala followed by Reception and Pheras</div>
                   <div class="open-detail-val">• Royal Dinner to follow</div>
                 </div>
 
                 <div class="open-detail-group stagger-item">
-                  <div class="open-detail-lbl">DRESS CODE</div>
-                  <div class="open-detail-val">Men – Royal Traditional Attire</div>
-                  <div class="open-detail-val">Women – Royal Traditional Attire</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION RECEPTION: Reception Video Section -->
-    <section class="card-section" id="section-reception">
-      <div class="reception-stage" id="reception-stage">
-        <div class="reception-card-wrapper" id="reception-card-wrapper">
-          <video id="reception-video" class="reception-video" src="Reception.mp4" autoplay playsinline muted loop preload="auto"></video>
-
-          <!-- Reception Caricature PNG (Ayushi & Sudama in Reception attire) -->
-          <img id="reception-caricature-img" class="reception-caricature-img" src="Reception caricature.png" alt="Reception Caricature" />
-
-          <!-- Reception Open Event Info Overlay -->
-          <div class="reception-info-overlay" id="reception-info-overlay">
-            <h2 class="reception-heading initial-stagger">Reception</h2>
-            <div class="reception-date initial-stagger">12.12.2026</div>
-
-            <!-- Tight Live Countdown Timer -->
-            <div class="reception-countdown initial-stagger" id="reception-countdown">
-              <div class="count-unit">
-                <span class="count-val" id="reception-days">00</span>
-                <span class="count-lbl">Days</span>
-              </div>
-              <span class="count-sep">:</span>
-              <div class="count-unit">
-                <span class="count-val" id="reception-hours">00</span>
-                <span class="count-lbl">Hours</span>
-              </div>
-              <span class="count-sep">:</span>
-              <div class="count-unit">
-                <span class="count-val" id="reception-mins">00</span>
-                <span class="count-lbl">Mins</span>
-              </div>
-              <span class="count-sep">:</span>
-              <div class="count-unit">
-                <span class="count-val" id="reception-secs">00</span>
-                <span class="count-lbl">Secs</span>
-              </div>
-            </div>
-
-            <!-- Standalone View Details Button -->
-            <button class="reception-details-btn initial-stagger" id="reception-details-btn" aria-expanded="false">
-              <span>View Details</span>
-              <svg class="chevron-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-
-            <!-- Revealed Details Content -->
-            <div class="reception-details-content" id="reception-details-panel">
-              <div class="subtle-details-box">
-                <div class="open-detail-group stagger-item">
-                  <div class="open-detail-lbl">TIME</div>
-                  <div class="open-detail-val">7:30 pm onwards</div>
-                </div>
-
-                <div class="open-detail-group stagger-item">
-                  <div class="open-detail-lbl">VENUE</div>
-                  <div class="open-detail-val">Maeva Lawn</div>
+                  <div class="open-detail-lbl">THEME</div>
+                  <div class="open-detail-val">Traditional Elegance</div>
                 </div>
               </div>
             </div>
@@ -3362,42 +3318,30 @@
               </div>
             </form>
 
+            <div class="closing-presence-msg reveal-item">
+              Your presence will make our celebration evan more special.
+            </div>
+
             <!-- Warm Regards & Family Section -->
             <div class="rsvp-regards-block reveal-item">
               <div class="rsvp-regards-title">Warm Regards</div>
-              <div class="rsvp-family-name">Srivastava Family</div>
+              <div class="family-members-list">
+                <div>Awnish Kumar Srivastava</div>
+                <div>Avantika Srivastava</div>
+                <div>Rishabh Srivastava</div>
+                <div>Atishi Srivastava</div>
+                <div>Anmol Srivastava</div>
+              </div>
             </div>
 
             <!-- Contact Information -->
             <div class="rsvp-contacts-block reveal-item">
-              <div class="rsvp-contact-item">
-                <span class="contact-name">Ayushi Srivastava (Bride)</span>
-                <span class="contact-sep">:</span>
-                <a href="tel:+919721261711" class="contact-phone">+91-9721261711</a>
+              <div class="contact-header-lbl">Contact No:</div>
+              <div class="rsvp-contact-numbers">
+                <a href="tel:+919794835822" class="contact-phone">+91-9794835822</a>
+                <span class="contact-sep">,</span>
+                <a href="tel:+918429631456" class="contact-phone">+91-8429631456</a>
               </div>
-              <div class="rsvp-contact-item">
-                <span class="contact-name">Sudama Srivastava (Groom)</span>
-                <span class="contact-sep">:</span>
-                <a href="tel:+917294874991" class="contact-phone">+91-7294874991</a>
-              </div>
-              <div class="rsvp-contact-item">
-                <span class="contact-name">Atishi Srivastava (Bride's sister)</span>
-                <span class="contact-sep">:</span>
-                <a href="tel:+917978681592" class="contact-phone">+91-7978681592</a>
-              </div>
-              <div class="rsvp-contact-item">
-                <span class="contact-name">Sharda Srivastava (Groom's sister)</span>
-                <span class="contact-sep">:</span>
-                <a href="tel:+919199067501" class="contact-phone">+91-9199067501</a>
-              </div>
-            </div>
-
-            <!-- No Gifts Please Note -->
-            <div class="rsvp-nogifts-block reveal-item">
-              <p class="rsvp-nogifts-text">
-                <span>No Gifts Please,</span><br />
-                <span>Your blessings are the most precious gift.</span>
-              </p>
             </div>
 
           </div>
@@ -3415,19 +3359,16 @@
     <button class="dot-btn" data-section="section-2" aria-label="Page 2: Venue Details">
       <span class="dot"></span>
     </button>
-    <button class="dot-btn" data-section="section-3" aria-label="Page 3: Haldi Ceremony">
+    <button class="dot-btn" data-section="section-3" aria-label="Page 3: Haldi">
       <span class="dot"></span>
     </button>
-    <button class="dot-btn" data-section="section-4" aria-label="Page 4: Tilak & Sangeet">
+    <button class="dot-btn" data-section="section-4" aria-label="Page 4: Shubh Tilak and Sangeet">
       <span class="dot"></span>
     </button>
-    <button class="dot-btn" data-section="section-7" aria-label="Page 5: Baraat & Varmala">
+    <button class="dot-btn" data-section="section-7" aria-label="Page 5: Baarat, Varmala & Reception">
       <span class="dot"></span>
     </button>
-    <button class="dot-btn" data-section="section-reception" aria-label="Page 6: Reception">
-      <span class="dot"></span>
-    </button>
-    <button class="dot-btn" data-section="section-9" aria-label="Page 7: RSVP & Contacts">
+    <button class="dot-btn" data-section="section-9" aria-label="Page 6: Warm Regards">
       <span class="dot"></span>
     </button>
   </nav>
@@ -4107,7 +4048,6 @@
                 if (window.onSection3Leave) window.onSection3Leave();
                 if (window.onSection4Leave) window.onSection4Leave();
                 if (window.onSection7Leave) window.onSection7Leave();
-                if (window.onReceptionLeave) window.onReceptionLeave();
                 if (window.onSection9Leave) window.onSection9Leave();
               } else if (sectionId === 'section-2') {
                 const venueWrapper = document.getElementById('venue-card-wrapper');
@@ -4116,49 +4056,36 @@
                 if (window.onSection3Leave) window.onSection3Leave();
                 if (window.onSection4Leave) window.onSection4Leave();
                 if (window.onSection7Leave) window.onSection7Leave();
-                if (window.onReceptionLeave) window.onReceptionLeave();
                 if (window.onSection9Leave) window.onSection9Leave();
               } else if (sectionId === 'section-3') {
                 if (window.stopSection2Petals) window.stopSection2Petals();
                 if (window.onSection3Enter) window.onSection3Enter();
                 if (window.onSection4Leave) window.onSection4Leave();
                 if (window.onSection7Leave) window.onSection7Leave();
-                if (window.onReceptionLeave) window.onReceptionLeave();
                 if (window.onSection9Leave) window.onSection9Leave();
               } else if (sectionId === 'section-4') {
                 if (window.stopSection2Petals) window.stopSection2Petals();
                 if (window.onSection3Leave) window.onSection3Leave();
                 if (window.onSection4Enter) window.onSection4Enter();
                 if (window.onSection7Leave) window.onSection7Leave();
-                if (window.onReceptionLeave) window.onReceptionLeave();
                 if (window.onSection9Leave) window.onSection9Leave();
               } else if (sectionId === 'section-7') {
                 if (window.stopSection2Petals) window.stopSection2Petals();
                 if (window.onSection3Leave) window.onSection3Leave();
                 if (window.onSection4Leave) window.onSection4Leave();
                 if (window.onSection7Enter) window.onSection7Enter();
-                if (window.onReceptionLeave) window.onReceptionLeave();
-                if (window.onSection9Leave) window.onSection9Leave();
-              } else if (sectionId === 'section-reception') {
-                if (window.stopSection2Petals) window.stopSection2Petals();
-                if (window.onSection3Leave) window.onSection3Leave();
-                if (window.onSection4Leave) window.onSection4Leave();
-                if (window.onSection7Leave) window.onSection7Leave();
-                if (window.onReceptionEnter) window.onReceptionEnter();
                 if (window.onSection9Leave) window.onSection9Leave();
               } else if (sectionId === 'section-9') {
                 if (window.stopSection2Petals) window.stopSection2Petals();
                 if (window.onSection3Leave) window.onSection3Leave();
                 if (window.onSection4Leave) window.onSection4Leave();
                 if (window.onSection7Leave) window.onSection7Leave();
-                if (window.onReceptionLeave) window.onReceptionLeave();
                 if (window.onSection9Enter) window.onSection9Enter();
               } else {
                 if (window.stopSection2Petals) window.stopSection2Petals();
                 if (window.onSection3Leave) window.onSection3Leave();
                 if (window.onSection4Leave) window.onSection4Leave();
                 if (window.onSection7Leave) window.onSection7Leave();
-                if (window.onReceptionLeave) window.onReceptionLeave();
                 if (window.onSection9Leave) window.onSection9Leave();
               }
             }
@@ -4534,113 +4461,6 @@
           };
         }
 
-        // Section Reception Video Controller Engine (Autoplay + Seamless Loop + Caricature & Details)
-        function initReceptionVideoController() {
-          const v = document.getElementById('reception-video');
-          if (!v) return;
-
-          let isReceptionActive = false;
-          let revealTimer = null;
-          let caricatureTimer = null;
-          let hasCaricatureRevealed = false;
-          let hasReceptionTextRevealed = false;
-
-          // Live Countdown Timer to 12 Dec 2026 07:30 PM IST (Reception)
-          const targetDate = new Date('2026-12-12T19:30:00+05:30').getTime();
-          function updateReceptionCountdown() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
-            const daysEl = document.getElementById('reception-days');
-            const hoursEl = document.getElementById('reception-hours');
-            const minsEl = document.getElementById('reception-mins');
-            const secsEl = document.getElementById('reception-secs');
-            if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
-
-            if (diff <= 0) {
-              daysEl.textContent = '00';
-              hoursEl.textContent = '00';
-              minsEl.textContent = '00';
-              secsEl.textContent = '00';
-              return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-            daysEl.textContent = days < 10 ? '0' + days : days;
-            hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-            minsEl.textContent = mins < 10 ? '0' + mins : mins;
-            secsEl.textContent = secs < 10 ? '0' + secs : secs;
-          }
-          updateReceptionCountdown();
-          setInterval(updateReceptionCountdown, 1000);
-
-          // View Details Collapsible Panel Listener
-          const detailsBtn = document.getElementById('reception-details-btn');
-          const detailsPanel = document.getElementById('reception-details-panel');
-          if (detailsBtn && detailsPanel) {
-            detailsBtn.addEventListener('click', (e) => {
-              e.stopPropagation();
-              const isOpen = detailsPanel.classList.contains('open');
-              if (isOpen) {
-                detailsPanel.classList.remove('open');
-                detailsBtn.classList.remove('open');
-                detailsBtn.setAttribute('aria-expanded', 'false');
-              } else {
-                detailsPanel.classList.add('open');
-                detailsBtn.classList.add('open');
-                detailsBtn.setAttribute('aria-expanded', 'true');
-              }
-            });
-          }
-
-          window.onReceptionEnter = function() {
-            isReceptionActive = true;
-
-            // Trigger text overlay reveal ONCE ONLY 1 second after section enters view
-            const overlay = document.getElementById('reception-info-overlay');
-            if (overlay && !hasReceptionTextRevealed) {
-              if (revealTimer) clearTimeout(revealTimer);
-              revealTimer = setTimeout(() => {
-                overlay.classList.add('revealed');
-                hasReceptionTextRevealed = true;
-              }, 1000);
-            }
-
-            // Trigger Reception Caricature reveal ONCE ONLY after 0.5 seconds
-            const caricature = document.getElementById('reception-caricature-img');
-            if (caricature && !hasCaricatureRevealed) {
-              if (caricatureTimer) clearTimeout(caricatureTimer);
-              caricatureTimer = setTimeout(() => {
-                caricature.classList.add('revealed-permanently');
-                hasCaricatureRevealed = true;
-              }, 500);
-            }
-
-            if (v.paused) {
-              v.play().catch(err => console.log('reception play error:', err));
-            }
-          };
-
-          window.onReceptionLeave = function() {
-            isReceptionActive = false;
-
-            if (!hasReceptionTextRevealed && revealTimer) {
-              clearTimeout(revealTimer);
-              revealTimer = null;
-            }
-
-            if (!hasCaricatureRevealed && caricatureTimer) {
-              clearTimeout(caricatureTimer);
-              caricatureTimer = null;
-            }
-
-            if (!v.paused) v.pause();
-          };
-        }
-
         // Section 9 Video Controller Engine (Single Video Autoplay + Continuous Seamless Loop + Interactive RSVP)
         function initSection9VideoController() {
           const v = document.getElementById('lastpage-video');
@@ -4745,7 +4565,6 @@
         initSection3VideoController();
         initSection4VideoController();
         initSection7VideoController();
-        initReceptionVideoController();
         initSection9VideoController();
 
         sections.forEach((sec) => observer.observe(sec));
